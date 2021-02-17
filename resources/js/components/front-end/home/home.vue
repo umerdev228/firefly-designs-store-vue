@@ -105,8 +105,8 @@
       </div>
 
     </div>
-    <div class="free-space-115">Powered by <a href="www.tryryda.com">TryRyda</a></div>
-    <div class="free-space-115">
+    <div v-if="$parent.language === 'en'" class="free-space-115">Powered by <a href="www.tryryda.com">TryRyda</a></div>
+    <div v-else class="free-space-115">
       مدعم من
       <a href="https://instagram.com/tryryda?igshid=3i6i16hao87v">ترائ ریدا</a></div>
     <div class="free-space-50"></div>
