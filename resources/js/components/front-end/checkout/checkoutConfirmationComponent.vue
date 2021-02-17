@@ -179,7 +179,7 @@
             <div class="col">
               <p class="mb-0 float-right mr-4" style="font-size: 16px;">
                 <span>
-                  3.000 KD
+                  {{ $parent.selectedArea.delivery_charges }} KWD
                 </span>
               </p>
             </div>
@@ -194,7 +194,7 @@
               </p>
             </div>
             <div class="col"><p class="float-right mr-4" style="font-size: 16px; font-weight: 600;">
-              53.000 KD
+              {{ totalPrice }} KD
             </p>
             </div>
           </div>

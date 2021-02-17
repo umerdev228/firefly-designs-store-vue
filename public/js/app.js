@@ -2247,18 +2247,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "detailComponent",
@@ -2298,6 +2286,9 @@ __webpack_require__.r(__webpack_exports__);
           self.products = response.data.products;
           self.category = response.data.category;
           self.$parent.loading = false;
+          response.data.products.forEach(function (product) {
+            console.log(product.addons_head.length);
+          });
         }
       })["catch"](function (e) {
         _this.errors.push(e);
@@ -4126,6 +4117,8 @@ __webpack_require__.r(__webpack_exports__);
         if (response.data.type === 'success') {
           self.cart = response.data.cart;
           self.totalQuantity = response.data.quantity;
+          self.$parent.quantity = response.data.quantity;
+          self.$parent.price = response.data.totalPrice;
           self.totalPrice = response.data.totalPrice;
           vue__WEBPACK_IMPORTED_MODULE_0___default.a.toasted.success(response.data.message);
         }
@@ -4392,6 +4385,7 @@ __webpack_require__.r(__webpack_exports__);
 
           if (response.data.cart !== null) {
             self.quantity = response.data.cart.quantity;
+            self.$parent.quantity = response.data.cart.quantity;
           }
         }
       })["catch"](function (e) {
@@ -4444,6 +4438,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         if (response.data.type === 'success') {
           self.$parent.price = response.data.totalPrice;
+          self.$parent.quantity = response.data.quantity;
           self.getCartItems();
         }
       })["catch"](function (e) {
@@ -41936,7 +41931,22 @@ var render = function() {
                                       : "rtl"
                                 }
                               }),
-                              _vm.$parent.language === "en"
+                              !product.addons_head.length > 0
+                                ? _c(
+                                    "p",
+                                    {
+                                      staticClass: "text-right m-0",
+                                      staticStyle: { "font-weight": "bold" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                  " +
+                                          _vm._s(product.price) +
+                                          " KWD\n                "
+                                      )
+                                    ]
+                                  )
+                                : _vm.$parent.language === "en"
                                 ? _c(
                                     "p",
                                     {
@@ -41949,7 +41959,8 @@ var render = function() {
                                       )
                                     ]
                                   )
-                                : _c(
+                                : _vm.$parent.language === "ar"
+                                ? _c(
                                     "p",
                                     {
                                       staticClass: "text-right m-0",
@@ -41957,10 +41968,11 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                  السعر حسب الاختيار\n              "
+                                        "\n                  السعر حسب الاختيار\n                "
                                       )
                                     ]
-                                  ),
+                                  )
+                                : _vm._e(),
                               _vm._v(" "),
                               _c("div", { staticClass: "mt-2  float-right" }, [
                                 _c(
@@ -42047,138 +42059,144 @@ var render = function() {
               staticStyle: { "background-color": "white" }
             }),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "action-button-english",
-                staticStyle: {
-                  "background-color": "white",
-                  "padding-bottom": "8px",
-                  "margin-bottom": "0",
-                  height: "60px",
-                  "z-index": "4"
-                }
-              },
-              [
-                _c(
-                  "button",
+            _vm.$parent.quantity > 0
+              ? _c(
+                  "div",
                   {
-                    staticClass:
-                      "MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary",
-                    style: {
-                      width: "97%",
-                      height: "100%",
-                      "box-shadow": "none",
-                      "text-transform": "none",
-                      background: _vm.$parent.settings.button_color
-                    },
-                    attrs: {
-                      tabindex: "0",
-                      type: "button",
-                      dir: _vm.$parent.language === "en" ? "ltr" : "rtl"
-                    },
-                    on: {
-                      click: function($event) {
-                        return _vm.$router.push("/order-review")
-                      }
+                    staticClass: "action-button-english",
+                    staticStyle: {
+                      "background-color": "white",
+                      "padding-bottom": "8px",
+                      "margin-bottom": "0",
+                      height: "60px",
+                      "z-index": "4"
                     }
                   },
                   [
-                    _c("span", { staticClass: "MuiButton-label" }, [
-                      _vm.$parent.language === "en"
-                        ? _c(
-                            "span",
-                            {
-                              staticClass: "px-1",
-                              staticStyle: {
-                                position: "absolute",
-                                left: "10px",
-                                top: "6px",
-                                "line-height": "34px",
-                                background: "rgba(0, 0, 0, 0.3)",
-                                "border-radius": "7px",
-                                "min-width": "32px",
-                                height: "32px",
-                                "font-size": "1rem"
-                              }
-                            },
-                            [_vm._v(_vm._s(_vm.$parent.quantity))]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.$parent.language === "ar"
-                        ? _c(
-                            "span",
-                            {
-                              staticStyle: {
-                                position: "absolute",
-                                right: "10px",
-                                top: "6px",
-                                "line-height": "34px",
-                                "border-radius": "7px",
-                                "min-width": "32px",
-                                height: "32px",
-                                "font-size": "1rem"
-                              }
-                            },
-                            [_vm._v(_vm._s(_vm.$parent.price))]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.$parent.language === "en"
-                        ? _c("span", { staticStyle: { "font-size": "1rem" } }, [
-                            _vm._v("Review Order")
-                          ])
-                        : _c("span", { staticStyle: { "font-size": "1rem" } }, [
-                            _vm._v("مراجعة الطلب")
-                          ]),
-                      _vm._v(" "),
-                      _vm.$parent.language === "ar"
-                        ? _c(
-                            "span",
-                            {
-                              staticClass: "px-1",
-                              staticStyle: {
-                                position: "absolute",
-                                left: "10px",
-                                top: "6px",
-                                "line-height": "34px",
-                                background: "rgba(0, 0, 0, 0.3)",
-                                "border-radius": "7px",
-                                "min-width": "32px",
-                                height: "32px",
-                                "font-size": "1rem"
-                              }
-                            },
-                            [_vm._v(_vm._s(_vm.$parent.quantity))]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.$parent.language === "en"
-                        ? _c(
-                            "span",
-                            {
-                              staticStyle: {
-                                position: "absolute",
-                                right: "10px",
-                                top: "6px",
-                                "line-height": "34px",
-                                "border-radius": "7px",
-                                "min-width": "32px",
-                                height: "32px",
-                                "font-size": "1rem"
-                              }
-                            },
-                            [_vm._v(_vm._s(_vm.$parent.price))]
-                          )
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "MuiTouchRipple-root" })
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary",
+                        style: {
+                          width: "97%",
+                          height: "100%",
+                          "box-shadow": "none",
+                          "text-transform": "none",
+                          background: _vm.$parent.settings.button_color
+                        },
+                        attrs: {
+                          tabindex: "0",
+                          type: "button",
+                          dir: _vm.$parent.language === "en" ? "ltr" : "rtl"
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.$router.push("/order-review")
+                          }
+                        }
+                      },
+                      [
+                        _c("span", { staticClass: "MuiButton-label" }, [
+                          _vm.$parent.language === "en"
+                            ? _c(
+                                "span",
+                                {
+                                  staticClass: "px-1",
+                                  staticStyle: {
+                                    position: "absolute",
+                                    left: "10px",
+                                    top: "6px",
+                                    "line-height": "34px",
+                                    background: "rgba(0, 0, 0, 0.3)",
+                                    "border-radius": "7px",
+                                    "min-width": "32px",
+                                    height: "32px",
+                                    "font-size": "1rem"
+                                  }
+                                },
+                                [_vm._v(_vm._s(_vm.$parent.quantity))]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.$parent.language === "ar"
+                            ? _c(
+                                "span",
+                                {
+                                  staticStyle: {
+                                    position: "absolute",
+                                    right: "10px",
+                                    top: "6px",
+                                    "line-height": "34px",
+                                    "border-radius": "7px",
+                                    "min-width": "32px",
+                                    height: "32px",
+                                    "font-size": "1rem"
+                                  }
+                                },
+                                [_vm._v(_vm._s(_vm.$parent.price))]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.$parent.language === "en"
+                            ? _c(
+                                "span",
+                                { staticStyle: { "font-size": "1rem" } },
+                                [_vm._v("Review Order")]
+                              )
+                            : _c(
+                                "span",
+                                { staticStyle: { "font-size": "1rem" } },
+                                [_vm._v("مراجعة الطلب")]
+                              ),
+                          _vm._v(" "),
+                          _vm.$parent.language === "ar"
+                            ? _c(
+                                "span",
+                                {
+                                  staticClass: "px-1",
+                                  staticStyle: {
+                                    position: "absolute",
+                                    left: "10px",
+                                    top: "6px",
+                                    "line-height": "34px",
+                                    background: "rgba(0, 0, 0, 0.3)",
+                                    "border-radius": "7px",
+                                    "min-width": "32px",
+                                    height: "32px",
+                                    "font-size": "1rem"
+                                  }
+                                },
+                                [_vm._v(_vm._s(_vm.$parent.quantity))]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.$parent.language === "en"
+                            ? _c(
+                                "span",
+                                {
+                                  staticStyle: {
+                                    position: "absolute",
+                                    right: "10px",
+                                    top: "6px",
+                                    "line-height": "34px",
+                                    "border-radius": "7px",
+                                    "min-width": "32px",
+                                    height: "32px",
+                                    "font-size": "1rem"
+                                  }
+                                },
+                                [_vm._v(_vm._s(_vm.$parent.price))]
+                              )
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "MuiTouchRipple-root" })
+                      ]
+                    )
                   ]
                 )
-              ]
-            )
+              : _vm._e()
           ],
           1
         )
@@ -43133,7 +43151,26 @@ var render = function() {
                           )
                     ]),
                     _vm._v(" "),
-                    _vm._m(1)
+                    _c("div", { staticClass: "col" }, [
+                      _c(
+                        "p",
+                        {
+                          staticClass: "mb-0 float-right mr-4",
+                          staticStyle: { "font-size": "16px" }
+                        },
+                        [
+                          _c("span", [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(
+                                  _vm.$parent.selectedArea.delivery_charges
+                                ) +
+                                " KWD\n              "
+                            )
+                          ])
+                        ]
+                      )
+                    ])
                   ]
                 ),
                 _vm._v(" "),
@@ -43172,7 +43209,25 @@ var render = function() {
                           )
                     ]),
                     _vm._v(" "),
-                    _vm._m(2)
+                    _c("div", { staticClass: "col" }, [
+                      _c(
+                        "p",
+                        {
+                          staticClass: "float-right mr-4",
+                          staticStyle: {
+                            "font-size": "16px",
+                            "font-weight": "600"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(_vm.totalPrice) +
+                              " KD\n          "
+                          )
+                        ]
+                      )
+                    ])
                   ]
                 )
               ]
@@ -43281,36 +43336,6 @@ var staticRenderFns = [
         })
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c(
-        "p",
-        {
-          staticClass: "mb-0 float-right mr-4",
-          staticStyle: { "font-size": "16px" }
-        },
-        [_c("span", [_vm._v("\n                3.000 KD\n              ")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c(
-        "p",
-        {
-          staticClass: "float-right mr-4",
-          staticStyle: { "font-size": "16px", "font-weight": "600" }
-        },
-        [_vm._v("\n            53.000 KD\n          ")]
-      )
-    ])
   }
 ]
 render._withStripped = true
@@ -48502,138 +48527,140 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "free-space-50" }),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "action-button-english",
-        staticStyle: {
-          "background-color": "white",
-          "padding-bottom": "8px",
-          "margin-bottom": "0px",
-          height: "60px",
-          "z-index": "4"
-        }
-      },
-      [
-        _c(
-          "button",
+    _vm.$parent.quantity > 0
+      ? _c(
+          "div",
           {
-            staticClass:
-              "MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary",
-            style: {
-              width: "97%",
-              height: "100%",
-              "box-shadow": "none",
-              "text-transform": "none",
-              background: _vm.$parent.settings.button_color
-            },
-            attrs: {
-              tabindex: "0",
-              type: "button",
-              dir: _vm.$parent.language === "en" ? "ltr" : "rtl"
-            },
-            on: {
-              click: function($event) {
-                return _vm.$router.push("/order-review")
-              }
+            staticClass: "action-button-english",
+            staticStyle: {
+              "background-color": "white",
+              "padding-bottom": "8px",
+              "margin-bottom": "0px",
+              height: "60px",
+              "z-index": "4"
             }
           },
           [
-            _c("span", { staticClass: "MuiButton-label" }, [
-              _vm.$parent.language === "en"
-                ? _c(
-                    "span",
-                    {
-                      staticClass: "px-1",
-                      staticStyle: {
-                        position: "absolute",
-                        left: "10px",
-                        top: "6px",
-                        "line-height": "34px",
-                        background: "rgba(0, 0, 0, 0.3)",
-                        "border-radius": "7px",
-                        "min-width": "32px",
-                        height: "32px",
-                        "font-size": "1rem"
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.$parent.quantity))]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.$parent.language === "ar"
-                ? _c(
-                    "span",
-                    {
-                      staticStyle: {
-                        position: "absolute",
-                        right: "10px",
-                        top: "6px",
-                        "line-height": "34px",
-                        "border-radius": "7px",
-                        "min-width": "32px",
-                        height: "32px",
-                        "font-size": "1rem"
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.$parent.price))]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.$parent.language === "en"
-                ? _c("span", { staticStyle: { "font-size": "1rem" } }, [
-                    _vm._v("Review Order")
-                  ])
-                : _c("span", { staticStyle: { "font-size": "1rem" } }, [
-                    _vm._v("مراجعة الطلب")
-                  ]),
-              _vm._v(" "),
-              _vm.$parent.language === "ar"
-                ? _c(
-                    "span",
-                    {
-                      staticClass: "px-1",
-                      staticStyle: {
-                        position: "absolute",
-                        left: "10px",
-                        top: "6px",
-                        "line-height": "34px",
-                        background: "rgba(0, 0, 0, 0.3)",
-                        "border-radius": "7px",
-                        "min-width": "32px",
-                        height: "32px",
-                        "font-size": "1rem"
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.$parent.quantity))]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.$parent.language === "en"
-                ? _c(
-                    "span",
-                    {
-                      staticStyle: {
-                        position: "absolute",
-                        right: "10px",
-                        top: "6px",
-                        "line-height": "34px",
-                        "border-radius": "7px",
-                        "min-width": "32px",
-                        height: "32px",
-                        "font-size": "1rem"
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.$parent.price))]
-                  )
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "MuiTouchRipple-root" })
+            _c(
+              "button",
+              {
+                staticClass:
+                  "MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary",
+                style: {
+                  width: "97%",
+                  height: "100%",
+                  "box-shadow": "none",
+                  "text-transform": "none",
+                  background: _vm.$parent.settings.button_color
+                },
+                attrs: {
+                  tabindex: "0",
+                  type: "button",
+                  dir: _vm.$parent.language === "en" ? "ltr" : "rtl"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.$router.push("/order-review")
+                  }
+                }
+              },
+              [
+                _c("span", { staticClass: "MuiButton-label" }, [
+                  _vm.$parent.language === "en"
+                    ? _c(
+                        "span",
+                        {
+                          staticClass: "px-1",
+                          staticStyle: {
+                            position: "absolute",
+                            left: "10px",
+                            top: "6px",
+                            "line-height": "34px",
+                            background: "rgba(0, 0, 0, 0.3)",
+                            "border-radius": "7px",
+                            "min-width": "32px",
+                            height: "32px",
+                            "font-size": "1rem"
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.$parent.quantity))]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$parent.language === "ar"
+                    ? _c(
+                        "span",
+                        {
+                          staticStyle: {
+                            position: "absolute",
+                            right: "10px",
+                            top: "6px",
+                            "line-height": "34px",
+                            "border-radius": "7px",
+                            "min-width": "32px",
+                            height: "32px",
+                            "font-size": "1rem"
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.$parent.price))]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$parent.language === "en"
+                    ? _c("span", { staticStyle: { "font-size": "1rem" } }, [
+                        _vm._v("Review Order")
+                      ])
+                    : _c("span", { staticStyle: { "font-size": "1rem" } }, [
+                        _vm._v("مراجعة الطلب")
+                      ]),
+                  _vm._v(" "),
+                  _vm.$parent.language === "ar"
+                    ? _c(
+                        "span",
+                        {
+                          staticClass: "px-1",
+                          staticStyle: {
+                            position: "absolute",
+                            left: "10px",
+                            top: "6px",
+                            "line-height": "34px",
+                            background: "rgba(0, 0, 0, 0.3)",
+                            "border-radius": "7px",
+                            "min-width": "32px",
+                            height: "32px",
+                            "font-size": "1rem"
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.$parent.quantity))]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$parent.language === "en"
+                    ? _c(
+                        "span",
+                        {
+                          staticStyle: {
+                            position: "absolute",
+                            right: "10px",
+                            top: "6px",
+                            "line-height": "34px",
+                            "border-radius": "7px",
+                            "min-width": "32px",
+                            height: "32px",
+                            "font-size": "1rem"
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.$parent.price))]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "MuiTouchRipple-root" })
+              ]
+            )
           ]
         )
-      ]
-    )
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -49887,7 +49914,7 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                KD " +
+                                        "\n                KWD " +
                                           _vm._s(product.price) +
                                           "\n              "
                                       )
@@ -50135,7 +50162,7 @@ var render = function() {
                             _vm._v(
                               "\n              " +
                                 _vm._s(_vm.totalPrice) +
-                                "\n            "
+                                " KWD\n            "
                             )
                           ]
                         )
@@ -50339,7 +50366,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n          " + _vm._s(_vm.price) + "\n        "
+                          "\n          " + _vm._s(_vm.price) + " KDW\n        "
                         )
                       ]
                     )
@@ -50536,7 +50563,7 @@ var render = function() {
                                     _vm._s(variant.name) +
                                       " (" +
                                       _vm._s(variant.price) +
-                                      ")"
+                                      " KDW)"
                                   )
                                 ]
                               ),
@@ -50642,7 +50669,7 @@ var render = function() {
                                         _vm._s(addon.name) +
                                           " (" +
                                           _vm._s(addon.price) +
-                                          ")"
+                                          " KDW)"
                                       )
                                     ]
                                   )
@@ -50658,7 +50685,7 @@ var render = function() {
                                         _vm._s(addon.name_ar) +
                                           " (" +
                                           _vm._s(addon.price) +
-                                          ")"
+                                          ") KDW"
                                       )
                                     ]
                                   ),

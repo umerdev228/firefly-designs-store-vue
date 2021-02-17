@@ -47,7 +47,7 @@
               </div>
               <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-3 MuiGrid-grid-md-2">
                 <div style="position: absolute; bottom: 10px; right: 14px; direction: rtl; text-align: right; font-size: 1rem; width: 100%; white-space: nowrap;">
-                  KD {{ product.price }}
+                  KWD {{ product.price }}
                 </div>
                 <svg v-on:click="removeCart(product)" class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; color: red; width: 20px; right: 15px; top: 10px;">
                   <path d="M14.59 8L12 10.59 9.41 8 8 9.41 10.59 12 8 14.59 9.41 16 12 13.41 14.59 16 16 14.59 13.41 12 16 9.41 14.59 8zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
@@ -87,7 +87,7 @@
                 Next
               </span>
               <span style="position: absolute; right: 10px; top: 6px; line-height: 34px; border-radius: 7px; min-width: 32px; height: 32px; font-size: 1rem;">
-                {{ totalPrice }}
+                {{ totalPrice }} KWD
               </span>
             </span>
             <span class="MuiTouchRipple-root"></span>
@@ -148,6 +148,8 @@ export default {
             if (response.data.type === 'success') {
               self.cart = response.data.cart
               self.totalQuantity = response.data.quantity
+              self.$parent.quantity = response.data.quantity
+              self.$parent.price = response.data.totalPrice
               self.totalPrice = response.data.totalPrice
               Vue.toasted.success(response.data.message);
             }

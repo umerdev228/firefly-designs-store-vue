@@ -92,19 +92,24 @@ class CartController extends Controller
             )
         ));
         $totalPrice = Cart::getTotal();
+        $quantity =  Cart::getTotalQuantity();
 
         return response()->json([
             'message' => 'Product Added To Successfully',
             'type' => 'success',
+            'quantity' => $quantity,
             'totalPrice' => $totalPrice,
         ]);
     }
 
     public function getCart(Request $request) {
         $cart = Cart::get($request['product']);
+        $quantity =  Cart::getTotalQuantity();
+
         if ($cart) {
             return response()->json([
                 'type' => 'success',
+                'quantity' => $quantity,
                 'cart' => $cart,
             ]);
         }
