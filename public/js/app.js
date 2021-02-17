@@ -3657,6 +3657,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "home",
   data: function data() {
@@ -48538,6 +48541,8 @@ var render = function() {
     _vm._v(" "),
     _vm._m(3),
     _vm._v(" "),
+    _vm._m(4),
+    _vm._v(" "),
     _c("div", { staticClass: "free-space-50" }),
     _vm._v(" "),
     !_vm.$parent.quantity > 0
@@ -48876,7 +48881,22 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "free-space-115" }, [
       _vm._v("Powered by "),
-      _c("a", { attrs: { href: "www.tryryda.com" } }, [_vm._v("tryryda")])
+      _c("a", { attrs: { href: "www.tryryda.com" } }, [_vm._v("TryRyda")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "free-space-115" }, [
+      _vm._v("\n    مدعم من\n    "),
+      _c(
+        "a",
+        {
+          attrs: { href: "https://instagram.com/tryryda?igshid=3i6i16hao87v" }
+        },
+        [_vm._v("ترائ ریدا")]
+      )
     ])
   }
 ]
