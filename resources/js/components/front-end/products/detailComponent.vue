@@ -30,7 +30,7 @@
         </p>
         <div class="mt-3 float-right " style="width: 150px; height: 30px;">
           <span class="float-right mr-4" style="color: green; direction: ltr; white-space: nowrap;">
-            {{ price }} KDW
+            {{ price }} KWD
           </span>
         </div>
       </div>
@@ -66,7 +66,7 @@
             {{ product.variant_head.name_ar }}
           </div>
           <div v-for="variant in product.variant_head.variants" class="form-group float" style="position: relative; padding-top: 8px; display: flex; flex-direction: column;">
-            <label class="form-check-label align-left float" :for="'variant-'+variant.id">{{ variant.name }} ({{variant.price}} KDW)</label>
+            <label class="form-check-label align-left float" :for="'variant-'+variant.id">{{ variant.name }} ({{variant.price}} KWD)</label>
             <input v-on:click="selectVariant(variant)" class="form-check-input float-right" type="checkbox" name="variant" :id="'variant-'+variant.id">
           </div>
         </div>
@@ -84,8 +84,8 @@
             {{ addon_head.name_ar }}
           </div>
           <div v-for="addon in addon_head.addons" class="form-group float" style="position: relative; padding-top: 8px; display: flex; flex-direction: column;">
-            <label v-if="$parent.language === 'en'" class="form-check-label align-left float" :for="'addon-'+addon.id">{{ addon.name }} ({{addon.price}} KDW)</label>
-            <label v-else class="form-check-label align-left float" :for="'addon-'+addon.id">{{ addon.name_ar }} ({{addon.price}}) KDW</label>
+            <label v-if="$parent.language === 'en'" class="form-check-label align-left float" :for="'addon-'+addon.id">{{ addon.name }} ({{addon.price}} KWD)</label>
+            <label v-else class="form-check-label align-left float" :for="'addon-'+addon.id">{{ addon.name_ar }} ({{addon.price}}) KWD</label>
             <input v-on:click="selectAddon(addon)" class="form-check-input float-right" type="checkbox" name="addons" :id="'addon-'+addon.id">
           </div>
         </div>

@@ -7,6 +7,7 @@
       <div class="App container-fluid h-100 english-font grayBackground" id="main">
         <div class="row" style="overflow-y: scroll;">
           <div class="col-lg-5 col-md-5 col-12 p-0 w-100 " style="overflow: hidden scroll; background-color: rgb(244, 245, 245); min-height: calc(100% - 60px); height: calc(100% - 60px);">
+            <div class="mobile-image mobile-banner" :style="{'background': 'url(/'+settings.background+') center center / cover no-repeat',}"></div>
             <router-view></router-view>
           </div>
           <banner-side-component></banner-side-component>

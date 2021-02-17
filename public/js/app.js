@@ -1981,6 +1981,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -41319,7 +41320,19 @@ var render = function() {
                     height: "calc(100% - 60px)"
                   }
                 },
-                [_c("router-view")],
+                [
+                  _c("div", {
+                    staticClass: "mobile-image mobile-banner",
+                    style: {
+                      background:
+                        "url(/" +
+                        _vm.settings.background +
+                        ") center center / cover no-repeat"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("router-view")
+                ],
                 1
               ),
               _vm._v(" "),
@@ -50541,7 +50554,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n          " + _vm._s(_vm.price) + " KDW\n        "
+                          "\n          " + _vm._s(_vm.price) + " KWD\n        "
                         )
                       ]
                     )
@@ -50738,7 +50751,7 @@ var render = function() {
                                     _vm._s(variant.name) +
                                       " (" +
                                       _vm._s(variant.price) +
-                                      " KDW)"
+                                      " KWD)"
                                   )
                                 ]
                               ),
@@ -50844,7 +50857,7 @@ var render = function() {
                                         _vm._s(addon.name) +
                                           " (" +
                                           _vm._s(addon.price) +
-                                          " KDW)"
+                                          " KWD)"
                                       )
                                     ]
                                   )
@@ -50860,7 +50873,7 @@ var render = function() {
                                         _vm._s(addon.name_ar) +
                                           " (" +
                                           _vm._s(addon.price) +
-                                          ") KDW"
+                                          ") KWD"
                                       )
                                     ]
                                   ),
