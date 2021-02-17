@@ -3644,6 +3644,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "home",
   data: function data() {
@@ -48523,9 +48536,144 @@ var render = function() {
       0
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "free-space-115" }),
+    _vm._m(3),
     _vm._v(" "),
     _c("div", { staticClass: "free-space-50" }),
+    _vm._v(" "),
+    !_vm.$parent.quantity > 0
+      ? _c(
+          "div",
+          {
+            staticClass: "action-button-english",
+            staticStyle: {
+              "background-color": "white",
+              "padding-bottom": "8px",
+              "margin-bottom": "0px",
+              height: "60px",
+              "z-index": "4"
+            }
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary",
+                style: {
+                  width: "97%",
+                  height: "100%",
+                  "box-shadow": "none",
+                  "text-transform": "none",
+                  background: _vm.$parent.settings.button_color
+                },
+                attrs: {
+                  tabindex: "0",
+                  type: "button",
+                  dir: _vm.$parent.language === "en" ? "ltr" : "rtl"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.$router.push("/search")
+                  }
+                }
+              },
+              [
+                _c("span", { staticClass: "MuiButton-label" }, [
+                  _vm.$parent.language === "en"
+                    ? _c(
+                        "span",
+                        {
+                          staticClass: "px-1",
+                          staticStyle: {
+                            position: "absolute",
+                            left: "10px",
+                            top: "6px",
+                            "line-height": "34px",
+                            background: "rgba(0, 0, 0, 0.3)",
+                            "border-radius": "7px",
+                            "min-width": "32px",
+                            height: "32px",
+                            "font-size": "1rem"
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.$parent.quantity))]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$parent.language === "ar"
+                    ? _c(
+                        "span",
+                        {
+                          staticStyle: {
+                            position: "absolute",
+                            right: "10px",
+                            top: "6px",
+                            "line-height": "34px",
+                            "border-radius": "7px",
+                            "min-width": "32px",
+                            height: "32px",
+                            "font-size": "1rem"
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.$parent.price))]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$parent.language === "en"
+                    ? _c("span", { staticStyle: { "font-size": "1rem" } }, [
+                        _vm._v("Start Order")
+                      ])
+                    : _c("span", { staticStyle: { "font-size": "1rem" } }, [
+                        _vm._v("بدء الطلب")
+                      ]),
+                  _vm._v(" "),
+                  _vm.$parent.language === "ar"
+                    ? _c(
+                        "span",
+                        {
+                          staticClass: "px-1",
+                          staticStyle: {
+                            position: "absolute",
+                            left: "10px",
+                            top: "6px",
+                            "line-height": "34px",
+                            background: "rgba(0, 0, 0, 0.3)",
+                            "border-radius": "7px",
+                            "min-width": "32px",
+                            height: "32px",
+                            "font-size": "1rem"
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.$parent.quantity))]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.$parent.language === "en"
+                    ? _c(
+                        "span",
+                        {
+                          staticStyle: {
+                            position: "absolute",
+                            right: "10px",
+                            top: "6px",
+                            "line-height": "34px",
+                            "border-radius": "7px",
+                            "min-width": "32px",
+                            height: "32px",
+                            "font-size": "1rem"
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.$parent.price))]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "MuiTouchRipple-root" })
+              ]
+            )
+          ]
+        )
+      : _vm._e(),
     _vm._v(" "),
     _vm.$parent.quantity > 0
       ? _c(
@@ -48721,6 +48869,15 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "free-space-115" }, [
+      _vm._v("Powered by "),
+      _c("a", { attrs: { href: "www.tryryda.com" } }, [_vm._v("tryryda")])
+    ])
   }
 ]
 render._withStripped = true
