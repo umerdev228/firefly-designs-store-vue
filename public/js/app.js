@@ -48542,7 +48542,15 @@ var render = function() {
     _vm.$parent.language === "en"
       ? _c("div", { staticClass: "free-space-115" }, [
           _vm._v("Powered by "),
-          _c("a", { attrs: { href: "www.tryryda.com" } }, [_vm._v("TryRyda")])
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://instagram.com/tryryda?igshid=3i6i16hao87v"
+              }
+            },
+            [_vm._v("TryRyda")]
+          )
         ])
       : _c("div", { staticClass: "free-space-115" }, [
           _vm._v("\n    مدعم من\n    "),
