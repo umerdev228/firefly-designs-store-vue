@@ -9,6 +9,7 @@ use App\OrderAddon;
 use App\OrderProduct;
 use App\OrderProductVariant;
 use App\Product;
+use App\PromoCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Cart;
@@ -266,6 +267,39 @@ class CartController extends Controller
             'totalPrice' => $totalPrice,
             'quantity' => $cartTotalQuantity,
         ]);
+    }
+
+    public function applyPromoCode (Request $request) {
+        $promo = PromoCode::where('code', $request['coupon'])->first();
+
+        if ($promo) {
+            if(strtotime($promo->active_until) > strtotime(date("Y.m.d h:i:sa"))) {
+                if ($promo->type === 'percentage') {
+                    $condition = new \Darryldecode\Cart\CartCondition(array(
+                        'name' => $promo->code,
+                        'type' => 'promo',
+                        'target' => 'total', // this condition will be applied to cart's total when getTotal() is called.
+                        'value' => '-'.$promo->percentage.'%',
+                        'order' => 1 // the order of calculation of cart base conditions. The bigger the later to be applied.
+                    ));
+                }
+                else {
+                    $condition = new \Darryldecode\Cart\CartCondition(array(
+                        'name' => $promo->code,
+                        'type' => 'promo',
+                        'target' => 'total', // this condition will be applied to cart's total when getTotal() is called.
+                        'value' => '-'.$promo->amount,
+                        'order' => 1 // the order of calculation of cart base conditions. The bigger the later to be applied.
+                    ));
+                }
+                Cart::condition($condition);
+                return response()->json(['type' => 'Success', 'message' => 'Promo Applied Successfully', 'total' => Cart::getTotal()]);
+            }
+            else {
+                return response()->json(['type' => 'error', 'message' => 'Promo Expire', 'total' => Cart::getTotal()]);
+            }
+        }
+
     }
 
 }

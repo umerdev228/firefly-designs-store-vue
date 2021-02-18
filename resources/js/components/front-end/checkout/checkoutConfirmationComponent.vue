@@ -6,6 +6,27 @@
         <simple-header v-if="$parent.language === 'en'" title="Checout Confirmation"></simple-header>
         <simple-header v-else title="تأكيد Checout"></simple-header>        <div class="free-space-60"></div>
 
+
+        <p v-if="$parent.language === 'en'" class="mb-1 text-left ml-3 " style="font-weight: 600; font-size: 1rem; margin-top: 25px;">Gift</p>
+        <div v-if="$parent.language === 'en'" class="border-top border-bottom row w-100 mx-0 justify-content-between" dir="ltr" style="background-color: white; min-height: 60px;">
+          <div class="col-8 align-self-center ml-0 text-left" dir="ltr" style="font-size: 1rem; font-weight: 400; padding-top: 15px; padding-bottom: 15px;">
+            Is this a gift?
+          </div>
+          <div class="gift-input">
+            <input type="checkbox" class="gift" name="gift" id="gift">
+          </div>
+        </div>
+
+        <p v-if="$parent.language === 'ar'" class="mb-1 text-right mr-3" style="font-weight: 600; font-size: 1rem; margin-top: 25px;">هدية</p>
+        <div v-if="$parent.language === 'ar'" class="border-top border-bottom row w-100 mx-0 justify-content-between" dir="rtl" style="background-color: white; min-height: 60px;">
+          <div class="col-8 align-self-center ml-0 text-right" dir="rtl" style="font-size: 1rem; font-weight: 400; padding-top: 15px; padding-bottom: 15px;">
+            هل هذا الطلب هدية؟
+          </div>
+          <div class="gift-input">
+            <input type="checkbox" class="gift" name="gift" id="gift">
+          </div>
+        </div>
+
         <p v-if="$parent.language === 'en'" class="mb-1 text-left ml-3" style="font-weight: 600; font-size: 1rem; margin-top: 25px;">Deliver to</p>
         <p v-else class="mb-1 text-left ml-3" style="font-weight: 600; font-size: 1rem; margin-top: 25px;">يسلم إلى</p>
         <router-link :to="{name: 'AreasList'}" class="nav-item nav-link">
@@ -73,11 +94,29 @@
             </div>
           </div>
         </div>
+        <div v-if="$parent.language === 'en'" class="border mt-4 pt-3" style="background-color: white; height: 115px; padding-bottom: 80px; position: relative;">
+          <p class="text-muted float-left ml-4">Apply a coupon</p>
+          <div class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth" style="width: 90%;">
+            <div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl" dir="ltr" paddingbottom="10">
+              <input aria-invalid="false" v-on:change="applyCouponCode" type="text" class="MuiInputBase-input MuiInput-input" v-model="coupon">
+            </div>
+          </div>
+        </div>
+        <div v-if="$parent.language === 'ar'" class="border mt-4 pt-3" style="background-color: white; height: 115px; padding-bottom: 80px; position: relative;">
+          <p class="text-muted float-right mr-4">
+          فعل كوبون
+        </p>
+          <div class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth" style="width: 90%;">
+          <div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl" dir="rtl" paddingbottom="10">
+          <input  v-model="coupon" v-on:change="applyCouponCode" aria-invalid="false" type="text" class="MuiInputBase-input MuiInput-input" value="">
+        </div>
+        </div>
+        </div>
         <div class="border mt-4 pt-3" style="background-color: white; height: 90px; padding-bottom: 80px;">
           <p v-if="$parent.language === 'en'" class="text-muted float-left ml-4">
             Special Remarks
           </p>
-          <p v-else class="text-muted float-left ml-4">
+          <p v-else class="text-muted float-right ml-4">
             كلمة خاصة
           </p>
           <div class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth" style="width: 90%;">
@@ -89,7 +128,7 @@
         <p v-if="$parent.language === 'en'" class="mb-1 text-left ml-3" style="font-weight: 600; font-size: 1rem; margin-top: 25px;">
           Payment Method
         </p>
-        <p v-else class="mb-1 text-left ml-3" style="font-weight: 600; font-size: 1rem; margin-top: 25px;">
+        <p v-else class="mb-1 float-right ml-3" style="font-weight: 600; font-size: 1rem; margin-top: 25px;">
           طريقة الدفع او السداد
         </p>
         <div class="border-top border-bottom w-100 mx-0 mb-3 py-4" style="background-color: white;">
@@ -114,7 +153,7 @@
                 <span class="MuiTouchRipple-root"></span>
               </select>
               <select v-model="payment_type" v-else class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root Mui-selected MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button Mui-selected" tabindex="0" role="option" aria-disabled="false" dir="ltr" aria-selected="true" data-value="none">
-                <option selected class="MuiFormHelperText-root mx-auto text-left" style="width: 92%;">
+                <option selected class="MuiFormHelperText-root mx-auto float-right" style="width: 92%;">
                   الرجاء اختيار طريقة الدفع
                 </option>
                 <option value="Cash" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
@@ -219,6 +258,14 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import moment from 'moment';
+
+Vue.filter('formatDate', function(value) {
+  if (value) {
+    return moment(String(value)).format('MM/DD/YYYY hh:mm')
+  }
+});
 export default {
   name: "checkoutConfirmationComponent",
   data() {
@@ -231,6 +278,7 @@ export default {
       cart: [],
       totalPrice: [],
       quantity: [],
+      coupon: '',
     }
   },
   created() {
@@ -275,6 +323,24 @@ export default {
         .catch(e => {
           this.errors.push(e)
         })
+    },
+    applyCouponCode() {
+      let self = this
+      let coupon = this.coupon
+
+      axios.post(APP_URL+'/apply-coupon-code', {
+        'coupon': coupon,
+      }).then(response => {
+        if (response.data.type === 'success') {
+          self.$parent = response.data.total
+        }
+        else {
+          Vue.toasted.error(response.data.message)
+        }
+      })
+          .catch(e => {
+            this.errors.push(e)
+          })
     }
   },
 }

@@ -198,6 +198,8 @@ Route::post('remove-cart', 'CartController@remove')->name('remove.cart');
 Route::post('createOrder', 'CartController@createOrder')->name('create.order');
 Route::post('updateOrder', 'CartController@updateOrder')->name('update.order');
 
+Route::post('apply-coupon-code', 'CartController@applyPromoCode')->name('apply.promo.code');
+
 Route::post('increment-cart-product', 'CartController@increment');
 Route::post('decrement-cart-product', 'CartController@decrement');
 
@@ -206,4 +208,3 @@ Route::get('/payment', 'OrderController@checkout');
 
 Route::get('get-site-setting', 'SettingController@getSetting');
 Route::post('confirm-order', 'OrderController@confirmOrder');
-

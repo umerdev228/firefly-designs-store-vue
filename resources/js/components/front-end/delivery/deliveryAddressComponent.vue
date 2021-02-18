@@ -6,8 +6,8 @@
         <simple-header v-else title="تبوك"></simple-header>
         <div class="border-top w-100" style="margin-top: 55px; background-color: white;">
           <div class="row stepperWidth" style="position: fixed; top: 53px; height: 5px; background-color: white; margin-right: auto; margin-left: auto;">
-            <div class="col mx-1 align-self-center" style="width: 30px; height: 2px; background-color: rgb(0, 153, 204);"></div>
-            <div class="col mx-1 align-self-center" style="width: 30px; height: 2px; background-color: rgb(0, 153, 204);"></div>
+            <div class="col mx-1 align-self-center" :style="{'background-color': $parent.settings.button_color}" style="width: 30px; height: 2px;"></div>
+            <div class="col mx-1 align-self-center" :style="{'background-color': $parent.settings.button_color}" style="width: 30px; height: 2px;"></div>
           </div>
           <div class="free-space-20-white"></div>
           <div :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" style="margin-top: 20px;">
@@ -24,12 +24,12 @@
             <path d="m212.398438 246.398438v199.703124l-.597657 2-113.601562-34.101562 27.101562-204.199219zm0 0" fill="#00acea"></path>
             <path d="m125.300781 209.800781-27.101562 204.199219-98.199219 36.601562 45.199219-206.5zm0 0" fill="#00efd1"></path>
           </svg>
-          <p v-if="$parent.language === 'en'" class="text-muted mt-3 mb-0" style="font-size: 22px;">Delivery Information</p>
+          <p v-if="$parent.language === 'en'" :style="{'color': $parent.settings.button_color}" class="text-muted mt-3 mb-0" style="font-size: 22px;">Delivery Information</p>
           <p v-else class="text-muted mt-3 mb-0" style="font-size: 22px;">معلومات التوصيل</p>
-          <p v-if="$parent.language === 'en'" class="mx-auto w-75 mb-0" style="font-size: 15px; color: rgb(194, 194, 194);">
+          <p v-if="$parent.language === 'en'" :style="{'color': $parent.settings.button_color}" class="mx-auto w-75 mb-0" style="font-size: 15px; color: rgb(194, 194, 194);">
             Help us get to you faster
           </p>
-          <p v-else class="mx-auto w-75 mb-0" style="font-size: 15px; color: rgb(194, 194, 194);">
+          <p v-else class="mx-auto w-75 mb-0" :style="{'color': $parent.settings.button_color}" style="font-size: 15px; color: rgb(194, 194, 194);">
             ساعدنا في الوصول إليك بشكل أسرع
           </p>
           <div style="height: 300px; width: 100%; margin-top: 20px;">

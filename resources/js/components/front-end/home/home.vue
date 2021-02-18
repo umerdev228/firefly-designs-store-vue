@@ -10,8 +10,8 @@
           </div>
           <div class="MuiListItemText-root ml-3 MuiListItemText-multiline">
             <span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">
-              <p v-if="$parent.language === 'en'" style="font-size: 14px; font-weight: bold;">{{ $parent.settings.site_name }}</p>
-              <p v-else style="font-size: 14px; font-weight: bold;">{{ $parent.settings.site_name_ar }}</p>
+              <p v-if="$parent.language === 'en'" style="font-size: 14px; font-weight: bold;" :style="{'color': $parent.settings.button_color}">{{ $parent.settings.site_name }}</p>
+              <p v-else style="font-size: 14px; font-weight: bold;" :style="{'color': $parent.settings.button_color}">{{ $parent.settings.site_name_ar }}</p>
             </span>
             <p class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock">
             <span class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="font-size: 0.9rem; color: rgb(95, 95, 95);">
@@ -57,7 +57,7 @@
       <form class="MuiPaper-root jss21 MuiPaper-elevation1 MuiPaper-rounded" style="direction: ltr;">
         <div class="MuiInputBase-root jss22">
           <router-link :to="{name: 'Search'}" class="nav-item nav-link">
-            <input v-if="$parent.language === 'en'" v-model="search" placeholder="Search for products" type="text" aria-label="Search for products" class="MuiInputBase-input" value="">
+            <input v-if="$parent.language === 'en'" v-model="search"  :style="{'color': $parent.settings.button_color}" placeholder="Search for products" type="text" aria-label="Search for products" class="MuiInputBase-input" value="">
             <input v-else v-model="search" placeholder="ابحث عن المنتجات" type="text" aria-label="Search for products" class="MuiInputBase-input" value="" dir="rtl">
           </router-link>
         </div>

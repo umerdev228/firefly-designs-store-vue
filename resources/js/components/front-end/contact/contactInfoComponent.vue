@@ -6,7 +6,7 @@
         <simple-header v-else title="معلومات الاتصال"></simple-header>
         <div class="border-top w-100" style="margin-top: 55px; background-color: white;">
           <div class="row stepperWidth" style="position: fixed; top: 53px; height: 5px; background-color: white; margin-right: auto; margin-left: auto;">
-            <div class="col mx-1 align-self-center" style="width: 30px; height: 2px; background-color: rgb(0, 153, 204);"></div>
+            <div class="col mx-1 align-self-center" :style="{'background-color': $parent.settings.button_color}" style="width: 30px; height: 2px;"></div>
             <div class="col mx-1 align-self-center" style="width: 30px; height: 2px; background-color: rgb(209, 206, 206);"></div>
           </div>
           <svg height="100" viewBox="0 -20 440.4 440" width="100" style="margin-top: 98px;">

@@ -29,7 +29,7 @@
           السعر
         </p>
         <div class="mt-3 float-right " style="width: 150px; height: 30px;">
-          <span class="float-right mr-4" style="color: green; direction: ltr; white-space: nowrap;">
+          <span class="float-right mr-4" :style="{'color': $parent.settings.button_color}" style="color: green; direction: ltr; white-space: nowrap;">
             {{ price }} KWD
           </span>
         </div>
@@ -42,13 +42,13 @@
           كمية
         </p>
         <div class="mt-3 float-right mr-4" style="width: 150px; height: 30px;">
-          <svg v-on:click="decrementItem()" class="MuiSvgIcon-root quantity_button float-left" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(0, 153, 204);">
+          <svg :style="{'color': $parent.settings.button_color}" v-on:click="decrementItem()" class="MuiSvgIcon-root quantity_button float-left" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(0, 153, 204);">
             <path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
           </svg>
-          <span class="mt-2" style="font-size: 15px;">
+          <span :style="{'color': $parent.settings.button_color}" class="mt-2" style="font-size: 15px;">
             {{ quantity }}
           </span>
-          <svg v-on:click="incrementItem()" class="MuiSvgIcon-root quantity_button float-right" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(0, 153, 204);">
+          <svg :style="{'color': $parent.settings.button_color}" v-on:click="incrementItem()" class="MuiSvgIcon-root quantity_button float-right" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(0, 153, 204);">
             <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
           </svg>
         </div>
