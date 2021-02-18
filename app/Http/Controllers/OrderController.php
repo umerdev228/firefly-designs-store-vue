@@ -157,7 +157,7 @@ class OrderController extends Controller
             $amt = $booking->total + (float)$area->delivery_charges;
             $crossCat = "GEN";
             $furl = url('client/saveorder');
-            $surl =  route('home');
+            $surl =  url('/');
             $hstring = $mid . "|" .  $txRefNo . "|" .  $surl . "|" . $furl . "|" . $amt . "|" . $txTime . "|" . $crossCat . "|" . $secret_key;
             $sig = hash('sha512', $hstring);
 
