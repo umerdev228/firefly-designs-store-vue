@@ -1,6 +1,6 @@
 <template>
   <div class="p-0 h-100">
-    <div class="mobile-image mobile-banner" :style="{'background': 'url(/'+settings.background+') center center / cover no-repeat',}"></div>
+    <div class="mobile-image mobile-banner" :style="{'background': 'url(/'+$parent.settings.background+') center center / cover no-repeat',}"></div>
     <ul class="MuiList-root MuiList-padding" style="width: 100%; margin-top: 0; padding: 3px 0 0; background-color: white;">
       <a class="makeLinkNormal" href="javascript:void(0)">
         <div class="MuiButtonBase-root MuiListItem-root pt-1 MuiListItem-button MuiListItem-alignItemsFlexStart" tabindex="0" role="button" aria-disabled="false" style="margin-left: 0px; padding-right: 0px; padding-left: 15px; padding-bottom: 4px;">
