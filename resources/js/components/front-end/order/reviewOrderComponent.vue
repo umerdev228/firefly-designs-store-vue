@@ -13,7 +13,7 @@
                   <img height="70" :src="product.attributes.image" style="border-radius: 5px; min-width: 70px; min-height: 70px; width: 70px; height: 70px;">
                   <div class="MuiGrid-root mx-auto mt-1 MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-around" style="width: 82px; background-color: white; height: 30px;">
                     <div v-on:click="productQuantityDecrement(product.id, product.quantity)" class="MuiGrid-root option-quantity-button MuiGrid-item">
-                      <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                      <svg :style="{'color': $parent.settings.button_color}" class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
                       </svg>
                     </div>
@@ -23,7 +23,7 @@
                       </div>
                     </div>
                     <div v-on:click="productQuantityIncrement(product.id, product.quantity)" class="MuiGrid-root option-quantity-button MuiGrid-item">
-                      <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                      <svg :style="{'color': $parent.settings.button_color}" class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
                       </svg>
                     </div>

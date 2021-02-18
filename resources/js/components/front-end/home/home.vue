@@ -58,7 +58,7 @@
         <div class="MuiInputBase-root jss22">
           <router-link :to="{name: 'Search'}" class="nav-item nav-link">
             <input v-if="$parent.language === 'en'" v-model="search"  :style="{'color': $parent.settings.button_color}" placeholder="Search for products" type="text" aria-label="Search for products" class="MuiInputBase-input" value="">
-            <input v-else v-model="search" placeholder="ابحث عن المنتجات" type="text" aria-label="Search for products" class="MuiInputBase-input" value="" dir="rtl">
+            <input v-else v-model="search" placeholder="ابحث عن المنتجات" :style="{'color': $parent.settings.button_color}" type="text" aria-label="Search for products" class="MuiInputBase-input" value="" dir="rtl">
           </router-link>
         </div>
         <button class="MuiButtonBase-root MuiIconButton-root jss23" tabindex="0" type="submit" aria-label="search">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Area;
+use App\BookeySetting;
 use App\Customer;
 use App\Order;
 use App\OrderProduct;
@@ -142,8 +143,13 @@ class OrderController extends Controller
 //            $mid = 'mer20000543';
 //            $secret_key = '3750331';
 
-            $mid = 'mer20000719';
-            $secret_key = '2934100';
+            $bookeey = BookeySetting::first();
+//            $mid = 'mer20000719';
+//            $secret_key = '2934100';
+
+
+            $mid = $bookeey['mid'];
+            $secret_key = $bookeey['secrete'];
 
 
             $txTime = $user->id;
