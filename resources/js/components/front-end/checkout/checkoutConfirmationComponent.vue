@@ -186,7 +186,10 @@
 
 
         </div>
-        <p class="mt-4 mb-1 text-left ml-3 " style="font-weight: 600; font-size: 1rem;" dir="rtl">
+        <p  v-if="$parent.language === 'en'" class="mt-4 mb-1 text-left ml-3 " style="font-weight: 600; font-size: 1rem;" dir="ltr">
+          Delivery time
+        </p>
+        <p  v-if="$parent.language === 'ar'" class="mt-4 mb-1 float-right ml-3 " style="font-weight: 600; font-size: 1rem;" dir="rtl">
           موعد التسليم
         </p>
 
@@ -197,7 +200,7 @@
 
         <div class="border-top border-bottom row w-100 mx-0 justify-content-between" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" style="background-color: white; height: 60px;">
           <div class="col-9 align-self-center ml-0 text-left" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" style="font-size: 1rem; font-weight: 400; color: red;">
-            On Thursday Feb 11 - 11:00 AM - 12:00 PM
+            On {{ deliverTime }}
           </div>
           <div class="col-2 align-self-center mr-4 pr-0 text-right">
             <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(51, 51, 51);">
@@ -279,6 +282,7 @@ export default {
       totalPrice: [],
       quantity: [],
       coupon: '',
+      deliverTime: '',
     }
   },
   created() {
@@ -288,7 +292,7 @@ export default {
     this.phone = localStorage.getItem('customer_phone')
   },
   mounted() {
-
+    this.deliverTime = moment().add(this.$parent.selectedArea.delivery_time, 'minutes').format("dddd, MMMM Do  h:mm a");
   },
   methods: {
     getCartItems() {

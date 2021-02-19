@@ -317,12 +317,23 @@ class ClientController extends Controller
 
     public function saveOrder(Request $request)
     {
+        $yesterday = Carbon::yesterday();
+        $today = Carbon::today();
+        $lastOrder = Order::whereBetween('created_at', [$yesterday->addHours(24)->toDateTimeString(), $today->addHours(22)->toDateTimeString()])->get()->last();
 
         $trx_id = Session::get('trx_id');
 
         $order = Order::where('trx_id', $trx_id)->get()->last();
 
         $updateOrder = Order::find($order->id);
+
+        $updateOrder->invoice_number = date('dmyhis');
+        if ($lastOrder) {
+            $updateOrder->order_no = $lastOrder->order_no + 1;
+        } else {
+            $updateOrder->order_no = 1;
+        }
+
         $updateOrder->trx_status = 'completed';
         $updateOrder->update();
 

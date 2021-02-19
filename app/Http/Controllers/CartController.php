@@ -202,9 +202,9 @@ class CartController extends Controller
                 }
             }
         }
-        $order_message = "A new order with an id:  $order->id has been placed.";
-
-        event(new OrderEvent($order->id, $order_message));
+//        $order_message = "A new order with an id:  $order->id has been placed.";
+//
+//        event(new OrderEvent($order->id, $order_message));
 
         return response()->json([
             'customer_id' => $customer['id'],
