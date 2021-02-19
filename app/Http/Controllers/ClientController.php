@@ -318,9 +318,9 @@ class ClientController extends Controller
     public function saveOrder(Request $request)
     {
 
-        $olderOrder = Session::get('order');
+        $trx_id = Session::get('trx_id');
 
-        $order = Order::where('trx_id', $request->txnId)->get()->last();
+        $order = Order::where('trx_id', $trx_id)->get()->last();
 
         $updateOrder = Order::find($order->id);
         $updateOrder->trx_status = 'completed';
@@ -336,6 +336,7 @@ class ClientController extends Controller
 
         Session::forget('cart');
         Session::forget('order');
+        Session::forget('trx_id');
 
         return redirect('client/order_placed');
     }

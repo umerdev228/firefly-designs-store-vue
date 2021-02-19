@@ -214,6 +214,9 @@ class CartController extends Controller
     }
 
     public function updateOrder(Request $request) {
+        $trx_id = time();
+        $olderOrder = Session::put('trx_id', $trx_id);
+
         $order = Order::where('id', $request['order_id'])->update([
             'note' => $request['additional'],
             'avanue' => $request['avanue'],
@@ -223,6 +226,8 @@ class CartController extends Controller
             'building' => $request['building'],
             'street' => $request['street'],
             'block' => $request['block'],
+            'trx_id' => $trx_id,
+
         ]);
         return response()->json([
             'type' => 'success',

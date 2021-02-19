@@ -132,9 +132,8 @@ class OrderController extends Controller
         $details['date'] = $booking->date;
         $details['payment_gateway'] = $booking->payment_type;
 
-
-        if ($booking->payment_gateway == 'cash') {
-            return redirect()->route('home');
+        if ($details['payment_gateway'] == 'Cash') {
+            return redirect('client/saveorder');
         }
         else {
 //            $mid = 'mer2000032';
