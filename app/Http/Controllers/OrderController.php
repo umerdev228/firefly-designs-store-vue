@@ -35,7 +35,7 @@ class OrderController extends Controller
 
         return DataTables::of($data)
             ->addColumn('action',function ($dt) use ($statuses){
-               $statushtml='';
+                $statushtml='';
                 foreach ($statuses as $status){
                     $statushtml.='<a data-id="'.$dt->id.'" data-status-id="'.$status->id.'" style="margin: 5px;" href="#" class="btn btn-success btn-status">'.$status->status.'</a>';
                 }
@@ -47,7 +47,7 @@ class OrderController extends Controller
             })->addColumn('status',function ($dt){
                 $status=OrderStatus::find($dt->status_id);
                 if ($status){
-                return '<div class="badge badge-dark">'.$status->status.'</div>';
+                    return '<div class="badge badge-dark">'.$status->status.'</div>';
                 }
                 return '';
             })->rawColumns(['status','action'])->make(true);
@@ -160,20 +160,18 @@ class OrderController extends Controller
             $hstring = $mid . "|" .  $txRefNo . "|" .  $surl . "|" . $furl . "|" . $amt . "|" . $txTime . "|" . $crossCat . "|" . $secret_key;
             $sig = hash('sha512', $hstring);
 
-
-
-        return view('payment.index', compact(
-            'booking',
-            'user',
-            'mid',
-            'hstring',
-            'sig',
-            'txRefNo',
-            'amt',
-            'crossCat',
-            'surl',
-            'furl'
-        ));
+            return view('payment.index', compact(
+                'booking',
+                'user',
+                'mid',
+                'hstring',
+                'sig',
+                'txRefNo',
+                'amt',
+                'crossCat',
+                'surl',
+                'furl'
+            ));
         }
     }
 

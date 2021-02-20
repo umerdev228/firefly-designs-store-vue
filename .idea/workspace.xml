@@ -182,7 +182,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tranxit" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -262,7 +262,8 @@
       <workItem from="1613706601208" duration="31000" />
       <workItem from="1613734558004" duration="597000" />
       <workItem from="1613736700237" duration="7600000" />
-      <workItem from="1613795597854" duration="2583000" />
+      <workItem from="1613795597854" duration="3183000" />
+      <workItem from="1613807315113" duration="761000" />
     </task>
     <servers />
   </component>
