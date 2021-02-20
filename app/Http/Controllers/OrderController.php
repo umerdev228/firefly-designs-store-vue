@@ -145,10 +145,11 @@ class OrderController extends Controller
             $bookeey = BookeySetting::first();
 //            $mid = 'mer20000719';
 //            $secret_key = '2934100';
-
+//            $submid = 'Subm2100086';
 
             $mid = $bookeey['mid'];
             $secret_key = $bookeey['secrete'];
+            $submid = $bookeey['submid'];
 
 
             $txTime = $user->id;
@@ -157,7 +158,12 @@ class OrderController extends Controller
             $crossCat = "GEN";
             $surl = url('client/saveorder');
             $furl =  url('/');
-            $hstring = $mid . "|" .  $txRefNo . "|" .  $surl . "|" . $furl . "|" . $amt . "|" . $txTime . "|" . $crossCat . "|" . $secret_key;
+            if ($submid) {
+                $hstring = $mid . "|" .  $txRefNo . "|" .  $submid . "|" .  $surl . "|" . $furl . "|" . $amt . "|" . $txTime . "|" . $crossCat . "|" . $secret_key;
+            }
+            else {
+                $hstring = $mid . "|" .  $txRefNo . "|" .  $surl . "|" . $furl . "|" . $amt . "|" . $txTime . "|" . $crossCat . "|" . $secret_key;
+            }
             $sig = hash('sha512', $hstring);
 
             return view('payment.index', compact(

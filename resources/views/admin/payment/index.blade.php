@@ -79,6 +79,13 @@
 
                                     </div>
                                     <div class="form-group">
+                                        <label for="submid">Bookey Sub MID:</label>
+
+                                        <input class="form-control form-control-solid" name="submid" value="{{ $setting?$setting->submid:'' }}"
+                                               placeholder="Enter Bookey Secrete Key" id="submid" type="text"/>
+
+                                    </div>
+                                    <div class="form-group">
                                         <label>Status({{ $setting?$setting->status:'' }})</label>
                                         <select class="form-control form-control-solid" name="status">
                                             <option value="Active" selected="selected" label="Active">Active</option>

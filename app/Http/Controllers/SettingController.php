@@ -196,6 +196,7 @@ class SettingController extends Controller
         if ($setting){
             $setting->secrete=$request->secrete;
             $setting->mid=$request->mid;
+            $setting->submid=$request->submid;
             $setting->status=$request->status;
             $setting->update();
 
@@ -203,6 +204,7 @@ class SettingController extends Controller
             $newSetting=new BookeySetting();
             $newSetting->secrete=$request->secrete;
             $newSetting->mid=$request->mid;
+            $newSetting->submid=$request->submid;
             $newSetting->status=$request->status;
             $newSetting->save();
         }
