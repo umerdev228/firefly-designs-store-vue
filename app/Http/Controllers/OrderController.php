@@ -24,7 +24,7 @@ class OrderController extends Controller
             'customers.name as customername','orders.payment_type',
             'areas.name as area','promo_codes.code','governments.name as government',
             'orders.delivery_charges','subtotal','discount','total'
-        )
+        )->where('payment_type' ,'!=',  null)->where('trx_status', '!=', null)->where('invoice_number', '!=', null)
             ->leftJoin('promo_codes','promo_codes.id','=','orders.promo_code_id')
             ->join('areas','areas.id','=','orders.area_id')
             ->join('governments','governments.id','=','orders.government_id')
@@ -155,8 +155,8 @@ class OrderController extends Controller
             $txRefNo = time();
             $amt = $booking->total + (float)$area->delivery_charges;
             $crossCat = "GEN";
-            $furl = url('client/saveorder');
-            $surl =  url('/');
+            $surl = url('client/saveorder');
+            $furl =  url('/');
             $hstring = $mid . "|" .  $txRefNo . "|" .  $surl . "|" . $furl . "|" . $amt . "|" . $txTime . "|" . $crossCat . "|" . $secret_key;
             $sig = hash('sha512', $hstring);
 
