@@ -283,7 +283,7 @@
               </label>
               <div class="MuiInputBase-root MuiInput-root MuiInput-underline" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" style="width: 100%;">
                 <div class="MuiSelect-root pr-5 MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input" tabindex="0" role="button" aria-haspopup="listbox" aria-labelledby="demo-simple-select-label demo-simple-select" id="demo-simple-select"><span>
-                  <img src="https://tapcom-live.ams3.cdn.digitaloceanspaces.com/media/flags/Kuwait/kuwait_flag.png" width="20" height="20" class="mx-2"></span>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_Kuwait.svg" width="20" height="20" class="mx-2"></span>
                   Kuwait
                 </div>
                 <input name="country" aria-hidden="true" tabindex="-1" class="MuiSelect-nativeInput" value="24">

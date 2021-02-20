@@ -33,6 +33,7 @@ var KTDatatablesDataSourceAjaxServer = function() {
                 {data: 'code','name':'promo_codes.code'},
                 {data: 'government'},
                 {data: 'area'},
+                {data: 'delivery_time'},
                 {data: 'payment_type'},
                 {data: 'delivery_charges'},
 

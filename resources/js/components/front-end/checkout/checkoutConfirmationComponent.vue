@@ -186,10 +186,10 @@
 
 
         </div>
-        <p  v-if="$parent.language === 'en'" class="mt-4 mb-1 text-left ml-3 " style="font-weight: 600; font-size: 1rem;" dir="ltr">
+        <p class="mt-4 mb-1 text-left ml-3 " style="font-weight: 600; font-size: 1rem;" dir="ltr">
           Delivery time
         </p>
-        <p  v-if="$parent.language === 'ar'" class="mt-4 mb-1 float-right ml-3 " style="font-weight: 600; font-size: 1rem;" dir="rtl">
+        <p v-if="$parent.language === 'ar'" class="mt-4 mb-1 float-right ml-3 " style="font-weight: 600; font-size: 1rem;" dir="rtl">
           موعد التسليم
         </p>
 
@@ -203,7 +203,7 @@
             On {{ deliverTime }}
           </div>
           <div class="col-2 align-self-center mr-4 pr-0 text-right">
-            <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(51, 51, 51);">
+            <svg  v-on:click="show" v-if="$parent.language === 'en'" class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(51, 51, 51);">
               <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path>
             </svg>
           </div>
@@ -256,6 +256,34 @@
           </button>
         </div>
       </div>
+      <modal name="my-first-modal"
+             :buttons="[{
+      title: 'Cancel',
+      handler: () => {
+        this.$modal.hide('dialog')
+      }
+   },
+    ]"
+      >
+
+        <div class="card">
+          <div class="card-header">
+            <h4>Set time For Delivery</h4>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="date-time">Delivery Time:</label>
+              <input v-on:change="changeDeliveryTime" v-model="deliverTimeFormated" type="datetime-local" class="form-control" id="date-time">
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="form-group float-right">
+              <button v-on:click="hide" type="button" class="btn btn-success">Ok</button>
+            </div>
+          </div>
+        </div>
+
+      </modal>
     </div>
   </div>
 </template>
@@ -283,6 +311,7 @@ export default {
       quantity: [],
       coupon: '',
       deliverTime: '',
+      deliverTimeFormated: '',
     }
   },
   created() {
@@ -293,8 +322,22 @@ export default {
   },
   mounted() {
     this.deliverTime = moment().add(this.$parent.selectedArea.delivery_time, 'minutes').format("dddd, MMMM Do  h:mm a");
+    this.deliverTimeFormated = moment().add(this.$parent.selectedArea.delivery_time, 'minutes').format('yyyy-MM-DDThh:mm')
+
   },
   methods: {
+    changeDeliveryTime () {
+      this.deliverTime = moment(this.deliverTimeFormated).format("dddd, MMMM Do  h:mm a");
+
+    },
+    show () {
+      console.log('show')
+      this.$modal.show('my-first-modal');
+      console.log('show')
+    },
+    hide () {
+      this.$modal.hide('my-first-modal');
+    },
     getCartItems() {
       let self = this
       let order_id = localStorage.getItem('order_id')
@@ -319,6 +362,7 @@ export default {
         'order_id': order_id,
         'payment_type': self.payment_type,
         'special_remark': self.special_remark,
+        'deliverTime': self.deliverTime,
       }).then(response => {
           if (response.data.type === 'success') {
             window.location = "/payment?id="+order_id

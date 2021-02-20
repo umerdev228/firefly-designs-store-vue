@@ -10,6 +10,8 @@ import {routes} from './routes';
 import Toasted from 'vue-toasted';
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+import VModal from 'vue-js-modal/dist/index.nocss.js'
+import 'vue-js-modal/dist/styles.css'
 Vue.component('vue-phone-number-input', VuePhoneNumberInput);
 
 
@@ -23,6 +25,7 @@ axios.defaults.headers.common = {
 Vue.use(Toasted, { duration: 3000 })
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios)
+Vue.use(VModal)
 
 Vue.component('head-component', require('./components/front-end/includes/headComponent').default);
 Vue.component('item-side', require('./components/front-end/home/item-side/itemSideComponent').default);

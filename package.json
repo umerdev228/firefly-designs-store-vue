@@ -28,6 +28,7 @@
         "toastr": "^2.1.4",
         "vue-autosuggest": "^2.2.0",
         "vue-axios": "^3.2.2",
+        "vue-js-modal": "^2.0.0-rc.6",
         "vue-phone-number-input": "^1.1.10",
         "vue-router": "^3.4.9",
         "vue-slick-carousel": "^1.0.6",

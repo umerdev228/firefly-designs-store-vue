@@ -20,7 +20,7 @@ class OrderController extends Controller
     public function getOrder(){
 
         $statuses=OrderStatus::orderBy('order','Desc')->get();
-        $data=Order::select('orders.id','order_no','orders.status_id','invoice_number',
+        $data=Order::select('orders.id','orders.delivery_time','order_no','orders.status_id','invoice_number',
             'customers.name as customername','orders.payment_type',
             'areas.name as area','promo_codes.code','governments.name as government',
             'orders.delivery_charges','subtotal','discount','total'
@@ -176,7 +176,7 @@ class OrderController extends Controller
     }
 
     public function confirmOrder(Request $request) {
-        Order::where('id', $request['order_id'])->update(['payment_type' => $request['payment_type'], 'special_dir' => $request['special_remark']]);
+        Order::where('id', $request['order_id'])->update(['payment_type' => $request['payment_type'], 'special_dir' => $request['special_remark'], 'delivery_time' => $request['deliverTime']]);
         return response()->json(['type' => 'success', 'message' => 'payment type update successfully']);
     }
 

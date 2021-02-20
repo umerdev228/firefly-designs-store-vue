@@ -255,6 +255,7 @@
                                 <th>Promo Code</th>
                                 <th>Government</th>
                                 <th>Area</th>
+                                <th>Delivery Time</th>
                                 <th>Payment Type</th>
                                 <th>Delivery Charges</th>
                                 <th>Subtotal</th>
