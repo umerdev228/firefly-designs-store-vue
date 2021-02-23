@@ -55,7 +55,7 @@
                         <div class="card card-custom">
                             <div class="card-header">
                                 <h3 class="card-title">
-                                   Site Setting
+                                    Site Setting
                                 </h3>
                             </div>
                             <!--begin::Form-->
@@ -63,13 +63,13 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group form-group-last">
-{{--                                        <div class="alert alert-custom alert-default" role="alert">--}}
-{{--                                            <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>--}}
-{{--                                            <div class="alert-text">--}}
-{{--                                               This setting will effect you website.--}}
-{{--                                                Colors and background will be effected and your site name.--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
+                                        {{--                                        <div class="alert alert-custom alert-default" role="alert">--}}
+                                        {{--                                            <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>--}}
+                                        {{--                                            <div class="alert-text">--}}
+                                        {{--                                               This setting will effect you website.--}}
+                                        {{--                                                Colors and background will be effected and your site name.--}}
+                                        {{--                                            </div>--}}
+                                        {{--                                        </div>--}}
                                     </div>
                                     <div class="form-group">
                                         <label>Site Name</label>
@@ -298,7 +298,7 @@
                                     <div class="form-group">
                                         <label for="exampleTextarea">Delivery Information (Arabic)</label>
                                         <textarea  class="form-control form-control-solid"  name="delivery_info_ar"
-                                                  rows="3">{{ $setting?$setting->delivery_info_ar:'' }}</textarea>
+                                                   rows="3">{{ $setting?$setting->delivery_info_ar:'' }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleTextarea">Restaurant Address</label>
@@ -308,7 +308,7 @@
                                     <div class="form-group">
                                         <label for="exampleTextarea">Restaurant Address (Arabic)</label>
                                         <textarea  class="form-control form-control-solid"  name="restaurant_address_ar"
-                                                  rows="3">{{ $setting?$setting->restaurant_address_ar:'' }}</textarea>
+                                                   rows="3">{{ $setting?$setting->restaurant_address_ar:'' }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleTextarea">Opening Time</label>
@@ -342,9 +342,9 @@
                                                      style="background-image:url('{{ url( $setting?($setting->logo!=null?$setting->logo:''):'') }}')"></div>
 
                                                 <label
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="change" data-toggle="tooltip" title=""
-                                                    data-original-title="Change avatar">
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="change" data-toggle="tooltip" title=""
+                                                        data-original-title="Change avatar">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
                                                     <input type="file" name="logo"
                                                            accept=".png, .jpg, .jpeg"/>
@@ -352,16 +352,16 @@
                                                 </label>
 
                                                 <span
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                            <i class="ki ki-bold-close icon-xs text-muted"></i>
-                    </span>
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                </span>
 
                                                 <span
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="remove" data-toggle="tooltip" title="Remove avatar">
-  <i class="ki ki-bold-close icon-xs text-muted"></i>
- </span>
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
+                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -376,25 +376,25 @@
                                                  style="background-image:url('{{ url( $setting?($setting->background!=null?$setting->background:''):'') }}');width: 100%"></div>
 
                                             <label
-                                                class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                data-action="change" data-toggle="tooltip" title=""
-                                                data-original-title="Change avatar">
+                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                    data-action="change" data-toggle="tooltip" title=""
+                                                    data-original-title="Change avatar">
                                                 <i class="fa fa-pen icon-sm text-muted"></i>
                                                 <input type="file" name="background_image" accept=".png, .jpg, .jpeg"/>
                                                 <input type="hidden" name="profile_avatar_remove"/>
                                             </label>
 
                                             <span
-                                                class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                            <i class="ki ki-bold-close icon-xs text-muted"></i>
-                    </span>
+                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                    data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                            </span>
 
                                             <span
-                                                class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                data-action="remove" data-toggle="tooltip" title="Remove avatar">
-  <i class="ki ki-bold-close icon-xs text-muted"></i>
- </span>
+                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                    data-action="remove" data-toggle="tooltip" title="Remove avatar">
+                                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                            </span>
                                         </div>
                                     </div>
 
@@ -407,9 +407,9 @@
                                                      style="background-image:url('{{ url( $setting?($setting->favicon!=null?$setting->favicon:''):'') }}')"></div>
 
                                                 <label
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="change" data-toggle="tooltip" title=""
-                                                    data-original-title="Change avatar">
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="change" data-toggle="tooltip" title=""
+                                                        data-original-title="Change avatar">
                                                     <i class="fa fa-pen icon-sm text-muted"></i>
                                                     <input type="file" name="favicone"
                                                            accept=".png, .jpg, .jpeg"/>
@@ -417,16 +417,16 @@
                                                 </label>
 
                                                 <span
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                            <i class="ki ki-bold-close icon-xs text-muted"></i>
-                    </span>
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                </span>
 
                                                 <span
-                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
-                                                    data-action="remove" data-toggle="tooltip" title="Remove avatar">
-  <i class="ki ki-bold-close icon-xs text-muted"></i>
- </span>
+                                                        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                        data-action="remove" data-toggle="tooltip" title="Remove avatar">
+                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -444,12 +444,33 @@
                                             <input class="form-control" name="category_color" type="color" value="{{  $setting?$setting->category_color:''}}" id="example-color-input"/>
                                         </div>
                                     </div>
-{{--                                    <div class="form-group row">--}}
-{{--                                        <label for="example-color-input" class="col-2 col-form-label">Background Color</label>--}}
-{{--                                        <div class="col-10">--}}
-{{--                                            <input class="form-control" name="background_color"  type="color" value="{{  $setting?$setting->background_color:''}}" id="example-color-input"/>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                    {{--                                    <div class="form-group row">--}}
+                                    {{--                                        <label for="example-color-input" class="col-2 col-form-label">Background Color</label>--}}
+                                    {{--                                        <div class="col-10">--}}
+                                    {{--                                            <input class="form-control" name="background_color"  type="color" value="{{  $setting?$setting->background_color:''}}" id="example-color-input"/>--}}
+                                    {{--                                        </div>--}}
+                                    {{--                                    </div>--}}
+
+                                    <div class="form-group row">
+                                        <label for="whatsapp" class="col-2 col-form-label">WhatsApp</label>
+                                        <div class="col-10">
+                                            <input class="form-control" name="whatsapp" type="text" value="{{  $setting?$setting->whatsapp:''}}" id="whatsapp"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="phone_number" class="col-2 col-form-label">Phone Number</label>
+                                        <div class="col-10">
+                                            <input class="form-control" name="phone_number" type="text" value="{{  $setting?$setting->phone_number:''}}" id="phone_number"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="instagram" class="col-2 col-form-label">Instagram</label>
+                                        <div class="col-10">
+                                            <input class="form-control" name="instagram" type="text" value="{{  $setting?$setting->instagram:''}}" id="instagram"/>
+                                        </div>
+                                    </div>
 
                                 </div>
 

@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b6f6392-897a-47b7-a89e-9240efa75288" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/media/1614060558.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/media/1614060561.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/media/1614060562.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/media/1614060690.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/media/1614060691.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_02_23_103138_add_social_media_coloumns_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/front-end/products/detailComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/front-end/products/detailComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SettingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/front-end/contact-us/contactUsComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/front-end/contact-us/contactUsComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/setting/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/setting/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +267,7 @@
       <workItem from="1613736700237" duration="7600000" />
       <workItem from="1613795597854" duration="3183000" />
       <workItem from="1613807315113" duration="11276000" />
-      <workItem from="1614059816108" duration="2444000" />
+      <workItem from="1614059816108" duration="6110000" />
     </task>
     <servers />
   </component>

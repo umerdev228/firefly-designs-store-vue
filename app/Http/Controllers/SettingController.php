@@ -83,9 +83,7 @@ class SettingController extends Controller
             $this->imageWidth=50;
             $uploadedFile = $request->file('favicone');
             $filename     = time() . '.png';
-
             $uploadedFile->move(public_path($dir), $filename);
-
             $method = 'optimize' . Str::title($type);
             if (method_exists($this, $method)) {
                 $id = $this->{$method}($dir, $filename);
@@ -129,6 +127,11 @@ class SettingController extends Controller
             }
             $updateSetting->min_order=$request->min_order;
             $updateSetting->take_order=$request->take_order;
+
+            $updateSetting->whatsapp = $request->whatsapp;
+            $updateSetting->phone_number = $request->phone_number;
+            $updateSetting->instagram = $request->instagram;
+
             $updateSetting->update();
         }else{
             $newSetting=new Setting();
@@ -151,6 +154,11 @@ class SettingController extends Controller
             $newSetting->time_zone=$request->time_zone;
             $newSetting->min_order=$request->min_order;
             $newSetting->take_order=$request->take_order;
+
+            $newSetting->whatsapp = $request->whatsapp;
+            $newSetting->phone_number = $request->phone_number;
+            $newSetting->instagram = $request->instagram;
+
             config(['app.timezone' => $request->time_zone]);
             if ($logoPath!='') {
                 $newSetting->logo = $logoPath;

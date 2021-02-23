@@ -15,7 +15,7 @@
           </p>
           <div class="row justify-content-start row-reverse" style="padding: 0px 10px;">
             <div class="col p-0 order-1">
-              <a href="https://api.whatsapp.com/send?phone=96550766730">
+              <a :href="'https://api.whatsapp.com/send?phone='+$parent.settings.whatsapp">
                 <button class="MuiButtonBase-root MuiIconButton-root p-0" tabindex="0" type="button">
                   <span class="MuiIconButton-label">
                     <svg id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" style="height: 28.36px; width: 28.36px;">
@@ -28,7 +28,7 @@
               </a>
             </div>
             <div class="col p-0 order-2">
-              <a href="https://www.instagram.com/tryryda/">
+              <a :href="$parent.settings.instagram">
                 <button class="MuiButtonBase-root MuiIconButton-root p-0" tabindex="0" type="button">
                   <span class="MuiIconButton-label">
                     <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: brown;">
@@ -40,7 +40,7 @@
               </a>
             </div>
             <div class="col p-0 order-3">
-              <a href="tel:+96550766730">
+              <a :href="'tel:'+$parent.settings.phone_number">
                 <button class="MuiButtonBase-root MuiIconButton-root p-0" tabindex="0" type="button">
                   <span class="MuiIconButton-label">
                     <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: blue;">
