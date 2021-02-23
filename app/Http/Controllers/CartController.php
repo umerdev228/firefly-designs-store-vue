@@ -63,17 +63,17 @@ class CartController extends Controller
 
     public function store(Request $request) {
         $product = Product::where('id', $request->product)->with('media')->first();
-        $price = (integer)$product->price;
+        $price = (float)$product->price;
 
         if (count($request->variants) > 0) {
             foreach ($request->variants as $variant) {
-                $price = (integer)$variant['price'];
+                $price = (float)$variant['price'];
             }
         }
 
         if (count($request->addons) > 0) {
             foreach ($request->addons as $addon) {
-                $price += (integer)$addon['price'];
+                $price += (float)$addon['price'];
             }
         }
         if (count($product->media) > 0) {
@@ -82,7 +82,7 @@ class CartController extends Controller
         Cart::add(array(
             'id' => $product->id, // inique row ID
             'name' => $product->name,
-            'price' => (integer)$price,
+            'price' => (float)$price,
             'quantity' => $request->quantity,
             'attributes' => array(
                 'addons' => $request->addons,

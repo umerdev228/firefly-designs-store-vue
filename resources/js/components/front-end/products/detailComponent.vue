@@ -209,12 +209,12 @@ export default {
     addToCart() {
       let self = this
       let totalPrice = 0.00
-      totalPrice += parseInt(self.product.price)
+      totalPrice += parseFloat(self.product.price)
       self.selectedVariants.forEach(function (variant) {
-        totalPrice += parseInt(variant.price)
+        totalPrice += parseFloat(variant.price)
       })
       self.selectedAddons.forEach(function (addon) {
-        totalPrice += parseInt(addon.price)
+        totalPrice += parseFloat(addon.price)
       })
 
       if (this.$parent.selectedArea === null) {
