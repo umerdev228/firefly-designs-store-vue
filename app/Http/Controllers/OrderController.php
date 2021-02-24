@@ -124,6 +124,8 @@ class OrderController extends Controller
         $booking = Order::where('id', $id)->first();
         $area = Area::where('id', $booking->area_id)->first();
         $user = Customer::where('id', $booking->customer_id)->first();
+        Order::where('id', $id)->update(['total' => (float)$booking->total + (float)$area->delivery_charges, 'subtotal' => (float)$booking->total ]);
+        $booking = Order::where('id', $id)->first();
 
         $details['title'] = 'Appointment Booking';
         $details['name'] = $user->name;
@@ -154,7 +156,7 @@ class OrderController extends Controller
 
             $txTime = $user->id;
             $txRefNo = time();
-            $amt = $booking->total + (float)$area->delivery_charges;
+            $amt = (float)$booking->total + (float)$area->delivery_charges;
             $crossCat = "GEN";
             $surl = url('client/saveorder');
             $furl =  url('/');

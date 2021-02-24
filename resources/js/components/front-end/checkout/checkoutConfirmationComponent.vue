@@ -236,19 +236,24 @@
               </p>
             </div>
             <div class="col"><p class="float-right mr-4" style="font-size: 16px; font-weight: 600;">
-              {{ totalPrice }} KD
+              {{ totalPrice + $parent.selectedArea.delivery_charges }} KWD
             </p>
             </div>
           </div>
         </div>
         <div class="free-space-170"></div>
         <div class="action-button-english" style="background-color: white; padding-bottom: 8px; margin-bottom: 0px; height: 60px; z-index: 4;">
-          <button class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': $parent.settings.button_color}">
+          <button v-on:click="confirmOrder" v-if="$parent.language === 'en'" class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': $parent.settings.button_color}">
             <span class="MuiButton-label">
-              <span v-on:click="confirmOrder" v-if="$parent.language === 'en'" style="font-size: 1rem;">
+              <span style="font-size: 1rem;">
                 Confirm Order
               </span>
-              <span v-on:click="confirmOrder" v-else style="font-size: 1rem;">
+            </span>
+            <span class="MuiTouchRipple-root"></span>
+          </button>
+          <button v-on:click="confirmOrder" v-else class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': $parent.settings.button_color}">
+            <span class="MuiButton-label">
+              <span style="font-size: 1rem;">
                 أكد الطلب
               </span>
             </span>
