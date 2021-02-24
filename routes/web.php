@@ -180,15 +180,15 @@ Route::get('forgetcart','ClientController@forgetCart');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 Route::get('newuseremail','UserController@checkEmail');
 
 Route::get('payment-test','FatoorahController@index');
 
 
-Route::get('home', function (){
-    return view('design.home');
-});
+//Route::get('home', function (){
+//    return view('design.home');
+//});
 
 //CART
 Route::post('store-cart', 'CartController@store')->name('cart.store');
