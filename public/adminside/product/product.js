@@ -73,7 +73,7 @@ var KTDatatablesDataSourceAjaxServer = function() {
                     display: function ( media, counter ) {
                         console.log(media, counter)
                         if (media.path !== undefined)
-                        return '<img src="'+HOST_URL+media.path+'"/>';
+                            return '<img src="'+HOST_URL+media.path+'"/>';
                         else {
                             return '<img src="'+HOST_URL+media+'"/>';
                         }
@@ -164,6 +164,9 @@ var KTDatatablesDataSourceAjaxServer = function() {
 
         // begin first table
         var newtable = table.DataTable({
+            "columnDefs": [
+                { "searchable": false, "targets": 4 }
+            ],
             dom: "Blfrtip",
             responsive: true,
             searchDelay: 500,
