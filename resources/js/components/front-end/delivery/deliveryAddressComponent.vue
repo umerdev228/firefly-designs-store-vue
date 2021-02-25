@@ -312,7 +312,7 @@
                     Block
                   </label>
                   <label v-if="!block && $parent.language === 'ar'" class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated" data-shrink="false" for="blockTextField" id="blockTextField-label" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'">
-                    بناء كتلة
+                    القطعة
                   </label>
                   <div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'">
                     <input aria-invalid="false" id="blockTextField" name="block" v-model="block" type="text" class="MuiInputBase-input MuiInput-input" value="">
@@ -364,7 +364,7 @@
                     Floor #
                   </label>
                   <label v-if="!floor && $parent.language === 'ar'" class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated" data-shrink="false" for="floor" id="floor-label" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'">
-                    الأرض #
+                    الطابق #
                   </label>
                   <div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'">
                     <input aria-invalid="false" id="floor" name="floor" v-model="floor" type="text" class="MuiInputBase-input MuiInput-input" value="">
@@ -403,7 +403,7 @@
                     Avenue
                   </label>
                   <label v-if="!avenue  && $parent.language === 'ar'" class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated" data-shrink="false" for="avenueTextField" id="avenueTextField-label" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'">
-                    السبيل
+                    الجادة
                   </label>
                   <div class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'">
                     <input aria-invalid="false" id="avenueTextField" name="avenue" v-model="avenue" type="text" class="MuiInputBase-input MuiInput-input" value="">
