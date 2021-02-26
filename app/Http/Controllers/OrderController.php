@@ -156,7 +156,7 @@ class OrderController extends Controller
 
             $txTime = $user->id;
             $txRefNo = time();
-            $amt = (float)$booking->total + (float)$area->delivery_charges;
+            $amt = (float)$booking->total;
             $crossCat = "GEN";
             $surl = url('client/saveorder');
             $furl =  url('/');
