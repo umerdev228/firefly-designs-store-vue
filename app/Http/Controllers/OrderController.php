@@ -162,24 +162,40 @@ class OrderController extends Controller
             $furl =  url('/');
             if ($submid) {
                 $hstring = $mid . "|" .  $txRefNo . "|" .  $submid . "|" .  $surl . "|" . $furl . "|" . $amt . "|" . $txTime . "|" . $crossCat . "|" . $secret_key;
+                $sig = hash('sha512', $hstring);
+
+                return view('payment.index', compact(
+                    'booking',
+                    'user',
+                    'mid',
+                    'submid',
+                    'hstring',
+                    'sig',
+                    'txRefNo',
+                    'amt',
+                    'crossCat',
+                    'surl',
+                    'furl'
+                ));
             }
             else {
                 $hstring = $mid . "|" .  $txRefNo . "|" .  $surl . "|" . $furl . "|" . $amt . "|" . $txTime . "|" . $crossCat . "|" . $secret_key;
-            }
-            $sig = hash('sha512', $hstring);
+                $sig = hash('sha512', $hstring);
 
-            return view('payment.index', compact(
-                'booking',
-                'user',
-                'mid',
-                'hstring',
-                'sig',
-                'txRefNo',
-                'amt',
-                'crossCat',
-                'surl',
-                'furl'
-            ));
+                return view('payment.index', compact(
+                    'booking',
+                    'user',
+                    'mid',
+                    'hstring',
+                    'sig',
+                    'txRefNo',
+                    'amt',
+                    'crossCat',
+                    'surl',
+                    'furl'
+                ));
+            }
+
         }
     }
 

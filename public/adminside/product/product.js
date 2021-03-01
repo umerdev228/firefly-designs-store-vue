@@ -35,13 +35,8 @@ var KTDatatablesDataSourceAjaxServer = function() {
                                 };
                             },
                             processResults: function (data, page) {
-                                console.log(data);
-
-
                                 return {
                                     results: $.map(data.dat, function (item) {
-                                        console.log('Items')
-                                        console.log(item);
                                         return {
                                             text:item.category_ar,
                                             id: item.id
@@ -71,7 +66,6 @@ var KTDatatablesDataSourceAjaxServer = function() {
                     name: "media",
                     type: "uploadMany",
                     display: function ( media, counter ) {
-                        console.log(media, counter)
                         if (media.path !== undefined)
                             return '<img src="'+HOST_URL+media.path+'"/>';
                         else {

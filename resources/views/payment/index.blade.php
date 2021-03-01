@@ -16,6 +16,9 @@
 
 <form method="post" id="bookeeyPaymentForm" autocomplete="off">
     <input type="hidden" class="form-control" id="mid" name="mid" value="{{ $mid }}"/>
+    @if($submid)
+        <input type="hidden" class="form-control" id="submid" name="submid" value="{{ $submid }}"/>
+    @endif
     <input type="hidden" class="form-control" id="txnRefNo" name="txnRefNo" value="{{ $txRefNo }}" maxlength="15" />
     <input type="hidden" class="form-control" value="{{ $amt }}" id="amt" name="amt" maxlength="20" />
     <input type="hidden" class="form-control" value="{{time()}}" id="txnTime" name="txnTime"/>

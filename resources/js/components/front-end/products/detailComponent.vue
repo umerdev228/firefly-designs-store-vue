@@ -8,7 +8,9 @@
           <div class="sc-AxheI eJXbOf"></div>
           <div class="sc-AxhUy elBAeu" style="transform: translateX(0px);">
             <div class="sc-AxiKw eSuMax" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); transform-origin: 0 0 0;">
-              <img class="preventDrag" :src="product.media[0].path">
+              <VueSlickCarousel :arrows="false" :dots="true">
+                <img v-for="media in product.media" class="preventDrag" :src="media.path">
+              </VueSlickCarousel>
             </div>
           </div>
         </div>
@@ -207,6 +209,12 @@ export default {
           })
     },
     addToCart() {
+      if (this.product.manage_stock) {
+        if (this.product.stock < this.$parent.quantity) {
+          Vue.toasted.error('Out of stock');
+          return;
+        }
+      }
       let self = this
       let totalPrice = 0.00
       totalPrice += parseFloat(self.product.price)

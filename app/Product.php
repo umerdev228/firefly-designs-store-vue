@@ -6,12 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable=['id','category_id',
-        'name','name_ar','description',
-        'description_ar','image',
-        'price','price_bd','price_omr','price_qar','price_sar','price_aed','price_usd',
-        'stock',
-        'display','order_level','discount','discount_percentage'];
+    protected $guarded = [];
 
     public function variantHead()
     {
