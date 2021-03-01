@@ -129,7 +129,7 @@
       </div>
       <div class="free-space-50"></div>
 
-      <div class="action-button-english" style="background-color: white; padding-bottom: 8px; margin-bottom: 0; height: 60px; z-index: 4;">
+      <div v-if=" $parent.take_order" class="action-button-english" style="background-color: white; padding-bottom: 8px; margin-bottom: 0; height: 60px; z-index: 4;">
         <button v-on:click="addToCart()" class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': $parent.settings.button_color}">
           <span class="MuiButton-label">
             <span  v-if="$parent.language === 'en'" style="font-size: 1rem;">

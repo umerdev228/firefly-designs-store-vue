@@ -111,7 +111,7 @@
       مدعم من
       <a href="https://instagram.com/tryryda?igshid=3i6i16hao87v">ترائ ریدا</a></div>
     <div class="free-space-50"></div>
-    <div v-if="!$parent.quantity > 0" class="action-button-english" style="background-color: white; padding-bottom: 8px; margin-bottom: 0px; height: 60px; z-index: 4;">
+    <div v-if="!$parent.quantity > 0 && $parent.take_order" class="action-button-english" style="background-color: white; padding-bottom: 8px; margin-bottom: 0px; height: 60px; z-index: 4;">
       <button v-on:click="$router.push('/search')" class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': $parent.settings.button_color}">
         <span class="MuiButton-label">
           <span v-if="$parent.language === 'en'" class="px-1" style="position: absolute; left: 10px; top: 6px; line-height: 34px; background: rgba(0, 0, 0, 0.3); border-radius: 7px; min-width: 32px; height: 32px; font-size: 1rem;">{{ $parent.quantity }}</span>
@@ -124,7 +124,7 @@
         <span class="MuiTouchRipple-root"></span>
       </button>
     </div>
-    <div v-if="$parent.quantity > 0" class="action-button-english" style="background-color: white; padding-bottom: 8px; margin-bottom: 0px; height: 60px; z-index: 4;">
+    <div v-if="$parent.quantity > 0 && $parent.take_order" class="action-button-english" style="background-color: white; padding-bottom: 8px; margin-bottom: 0px; height: 60px; z-index: 4;">
       <button v-on:click="$router.push('/order-review')" class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': $parent.settings.button_color}">
         <span class="MuiButton-label">
           <span v-if="$parent.language === 'en'" class="px-1" style="position: absolute; left: 10px; top: 6px; line-height: 34px; background: rgba(0, 0, 0, 0.3); border-radius: 7px; min-width: 32px; height: 32px; font-size: 1rem;">{{ $parent.quantity }}</span>
