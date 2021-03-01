@@ -39,6 +39,7 @@
           <div v-for="product in filteredProducts" class="col-6 mb-5" style="width: 50%; min-height: 240px; padding-right: 8px; padding-left: 8px;">
             <router-link :to="{name: 'ProductDetails', params: { id: product.id }}" class="nav-item nav-link">
               <a href="javascript:void(0)" style="color: black;">
+
                 <div v-if="product.media.length > 0" :style="{'background': 'url(' + product.media[0].path + ') center center / contain no-repeat', 'background-size': '100px', 'border-radius': '7px', 'width': '100%', 'display': 'block', 'cursor': 'pointer', 'min-height': '240px', 'position': 'relative'}"></div>
                 <div v-else :style="{'background': 'url(/images/product-default-img.jpg) center center / contain no-repeat', 'background-size': '100px', 'border-radius': '7px', 'width': '100%', 'display': 'block', 'cursor': 'pointer', 'min-height': '240px', 'position': 'relative'}"></div>
                 <div>
