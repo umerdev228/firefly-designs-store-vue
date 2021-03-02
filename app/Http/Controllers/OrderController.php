@@ -179,6 +179,7 @@ class OrderController extends Controller
                 ));
             }
             else {
+                $submid = false;
                 $hstring = $mid . "|" .  $txRefNo . "|" .  $surl . "|" . $furl . "|" . $amt . "|" . $txTime . "|" . $crossCat . "|" . $secret_key;
                 $sig = hash('sha512', $hstring);
 
@@ -186,6 +187,7 @@ class OrderController extends Controller
                     'booking',
                     'user',
                     'mid',
+                    'submid',
                     'hstring',
                     'sig',
                     'txRefNo',
