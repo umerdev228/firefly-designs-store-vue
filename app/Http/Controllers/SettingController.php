@@ -126,7 +126,7 @@ class SettingController extends Controller
                 $updateSetting->favicon=$faviconPath;
             }
             $updateSetting->min_order=$request->min_order;
-            $updateSetting->take_order=$request->take_order;
+            $updateSetting->take_order=$request->take_order ? 1 : 0;
 
             $updateSetting->whatsapp = $request->whatsapp;
             $updateSetting->phone_number = $request->phone_number;
@@ -153,7 +153,7 @@ class SettingController extends Controller
             $newSetting->category_color=$request->category_color;
             $newSetting->time_zone=$request->time_zone;
             $newSetting->min_order=$request->min_order;
-            $newSetting->take_order=$request->take_order;
+            $newSetting->take_order=$request->take_order ? 1 : 0;
 
             $newSetting->whatsapp = $request->whatsapp;
             $newSetting->phone_number = $request->phone_number;
