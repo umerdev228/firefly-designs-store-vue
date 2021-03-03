@@ -132,7 +132,7 @@
         <!--begin::Entry-->
         <div class="d-flex flex-column-fluid">
             <!--begin::Container-->
-            <div class="container">
+<?php /*            <div class="container">
                 <div class="card card-custom">
                     <div class="card-body">
                         <div class="row">
@@ -238,6 +238,7 @@
                 </div>
             </div>
             <!--end::Container-->
+            */ ?>
         </div>
         <div class="d-flex mt-2 flex-column-fluid">
             <!--begin::Container-->
@@ -250,19 +251,20 @@
                         <table class="table table-separate table-head-custom table-foot-custom table-checkable" id="kt_datatable" style="margin-top: 13px !important">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Order #</th>
-                                <th>Promo Code</th>
+                                <th>Order ID</th>
+                                <!-- <th>Order #</th> -->
+                                <th>Customer Name</th>
                                 <th>Government</th>
                                 <th>Area</th>
                                 <th>Delivery Time</th>
                                 <th>Payment Type</th>
                                 <th>Delivery Charges</th>
-                                <th>Subtotal</th>
-                                <th>Promo Discount</th>
                                 <th>Total</th>
+                                <th>Promo Code</th>
+                                <th>Promo Discount</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                                
                             </tr>
                             </thead>
                         </table>

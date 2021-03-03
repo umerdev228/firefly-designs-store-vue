@@ -13,6 +13,9 @@ var KTDatatablesDataSourceAjaxServer = function() {
 
         // begin first table
          newtable = table.DataTable({
+            "columnDefs": [
+                // { "searchable": false, "targets": [4,5]}
+            ],
             dom: "Blfrtip",
             responsive: true,
             searchDelay: 500,
@@ -27,21 +30,20 @@ var KTDatatablesDataSourceAjaxServer = function() {
             },
             columns: [
                 {data: 'id'},
-                {data: 'order_no',name:'order_no','render':function(data,full){
-                    return '<span>#'+data+'</span>'
-                    }},
-                {data: 'code','name':'promo_codes.code'},
-                {data: 'government'},
-                {data: 'area'},
+                // {data: 'order_no',name:'order_no','render':function(data,full){
+                //     return '<span>#'+data+'</span>'
+                //     }},
+                {data: 'customername','name':'customers.name'},
+                {data: 'government','name':'governments.name'},
+                {data: 'area','name':'areas.name'},
                 {data: 'delivery_time'},
                 {data: 'payment_type'},
                 {data: 'delivery_charges'},
-
-                {data: 'subtotal'},
-                {data: 'discount'},
                 {data: 'total'},
+                {data: 'code','name':'promo_codes.code'},
+                {data: 'discount'},
                 {data: 'status','name':'status'},
-                {data: 'action'},
+                {data: 'action'}
             ],
             buttons: [
                 // {extend: 'print', className: 'btn btn-info font-weight-bold'},
