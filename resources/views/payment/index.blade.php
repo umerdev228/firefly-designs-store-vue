@@ -37,7 +37,8 @@
 <script>
     $(document).ready(function (e) {
         // var urlString='https://demo.bookeey.com/portal/bookeeyPg';
-        var urlString='https://www.bookeey.com/portal/bookeeyPg';
+        // var urlString='https://www.bookeey.com/portal/bookeeyPg';
+        var urlString='https://pg.bookeey.com/internalapi/api/payment/requestLink';
         document.forms["bookeeyPaymentForm"].setAttribute('action',urlString);
         document.forms["bookeeyPaymentForm"].submit();
     })
