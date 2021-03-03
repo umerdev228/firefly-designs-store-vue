@@ -86,7 +86,7 @@
                       <div class="gm-style-pbc" style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0;">
                         <p class="gm-style-pbt"></p>
                       </div>
-                      <div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;">
+                      <div style="display: none; z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;">
                         <div style="z-index: 4; position: absolute; left: 50%; top: 50%; width: 100%; transform: translate(0px, 0px);">
                           <div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div>
                           <div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div>
