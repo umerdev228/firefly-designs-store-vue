@@ -32,7 +32,7 @@
           <p v-else class="mx-auto w-75 mb-0" :style="{'color': $parent.settings.button_color}" style="font-size: 15px; color: rgb(194, 194, 194);">
             ساعدنا في الوصول إليك بشكل أسرع
           </p>
-          <div style="height: 300px; width: 100%; margin-top: 20px; display: none;">
+          <div style="height: 300px; width: 100%; margin-top: 20px;">
             <div style="width: 100%; height: 100%; margin: 0px; padding: 0px; position: relative;">
               <div style="width: 100%; height: 100%; left: 0px; top: 0px; margin: 0px; padding: 0px; position: absolute; overflow: hidden;">
                 <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);">

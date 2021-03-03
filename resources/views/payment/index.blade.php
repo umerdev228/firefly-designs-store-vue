@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Payment</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="icon" href="{{ asset('favicon/favicon.ico') }}" type="image/x-icon" />
     <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -37,8 +36,8 @@
 <script>
     $(document).ready(function (e) {
         // var urlString='https://demo.bookeey.com/portal/bookeeyPg';
-        // var urlString='https://www.bookeey.com/portal/bookeeyPg';
-        var urlString='https://pg.bookeey.com/internalapi/api/payment/requestLink';
+        var urlString='https://www.bookeey.com/portal/bookeeyPg';
+        // var urlString='https://pg.bookeey.com/internalapi/api/payment/requestLink';
         document.forms["bookeeyPaymentForm"].setAttribute('action',urlString);
         document.forms["bookeeyPaymentForm"].submit();
     })
