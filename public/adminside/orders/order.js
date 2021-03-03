@@ -34,6 +34,7 @@ var KTDatatablesDataSourceAjaxServer = function() {
                 //     return '<span>#'+data+'</span>'
                 //     }},
                 {data: 'customername','name':'customers.name'},
+                {data: 'phone','name':'customers.phone'},
                 {data: 'government','name':'governments.name'},
                 {data: 'area','name':'areas.name'},
                 {data: 'delivery_time'},

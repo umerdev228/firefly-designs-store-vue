@@ -58,6 +58,7 @@
                             <tr>
                                 <th>Order ID</th>
                                 <th>Customer Name</th>
+                                <th>Phone</th>
                                 <th>Government</th>
                                 <th>Area</th>
                                 <th>Delivery Time</th>

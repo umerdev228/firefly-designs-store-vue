@@ -21,7 +21,7 @@ class OrderController extends Controller
 
         $statuses=OrderStatus::orderBy('order','Desc')->get();
         $data=Order::select('orders.id','orders.delivery_time','order_no','orders.status_id','invoice_number',
-            'customers.name as customername','orders.payment_type',
+            'customers.name as customername','orders.payment_type','customers.phone',
             'areas.name as area','promo_codes.code','governments.name as government',
             'orders.delivery_charges','subtotal','discount','total'
         )->where('payment_type' ,'!=',  null)->where('trx_status', '!=', null)->where('invoice_number', '!=', null)
