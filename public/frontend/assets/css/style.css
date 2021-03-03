@@ -3498,7 +3498,11 @@ button, input, optgroup, select, textarea {
 
 .row.text-center.justify-content-between.m-0.w-100 {
     padding: 10px;
+<<<<<<< HEAD
 } 
+=======
+}
+>>>>>>> ec34b78501405d3bce77deb172729dc91717b1fb
 
 a[href^="/products/"] > a > div {
     background-size: cover !important;
@@ -3533,7 +3537,11 @@ a[href^="/products/"] > a > div {
         padding: 2px !important;
         min-height: 30px !important;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> ec34b78501405d3bce77deb172729dc91717b1fb
     button.header-button-cricle:first-child {
         right: 30px;
     }
@@ -3549,6 +3557,7 @@ a[href^="/products/"] > a > div {
         display:block;
     }
     button#search_button {
+<<<<<<< HEAD
     display: none !important;
 }
 
@@ -3559,6 +3568,18 @@ a[href^="/products/"] > a > div {
 button.header-button-cricle:first-child svg {
     width: 20px;
 }
+=======
+        display: none !important;
+    }
+
+    .changeToFixedBackground.m-0.p-0 {
+        display: none;
+    }
+
+    button.header-button-cricle:first-child svg {
+        width: 20px;
+    }
+>>>>>>> ec34b78501405d3bce77deb172729dc91717b1fb
 }
 
 
@@ -3571,8 +3592,13 @@ div#demo-simple-select span.ml-auto.float-right {
     margin-top: -40px;
 }
 
+<<<<<<< HEAD
 select.MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.Mui-selected.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button.Mui-selected option[value="Bookeey"]{ 
     background-image:url("https://www.bookeey.com/v1/images/bookeey.png");   
+=======
+select.MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.Mui-selected.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button.Mui-selected option[value="Bookeey"]{
+    background-image:url("https://www.bookeey.com/v1/images/bookeey.png");
+>>>>>>> ec34b78501405d3bce77deb172729dc91717b1fb
 }
 
 .MuiGrid-root.text-left.MuiGrid-item.MuiGrid-grid-xs-5.MuiGrid-grid-sm-6.MuiGrid-grid-md-7.MuiGrid-grid-lg-8 {
