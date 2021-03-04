@@ -8,6 +8,7 @@ import DeliveryAddress from './components/front-end/delivery/deliveryAddressComp
 import CheckoutConfirmation from './components/front-end/checkout/checkoutConfirmationComponent.vue';
 import ContactUs from './components/front-end/contact-us/contactUsComponent.vue';
 import Search from './components/front-end/search/searchComponent.vue';
+import OrderTrack from './components/front-end/order-search/orderTrackComponent.vue';
 
 export const routes = [
     {
@@ -59,5 +60,10 @@ export const routes = [
         name: 'Search',
         path: '/search',
         component: Search
+    },
+    {
+        name: 'OrderTrack',
+        path: '/order/track',
+        component: OrderTrack
     },
 ];
