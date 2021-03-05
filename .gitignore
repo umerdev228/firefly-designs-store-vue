@@ -16,7 +16,7 @@ yarn-error.log
 /public/uploads/submissions/
 .phpstorm.meta.php
 _ide_helper.php
-public/uploads/
+public/uploads/*
 storage
 public/js/app.js
 
