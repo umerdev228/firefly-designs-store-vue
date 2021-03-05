@@ -630,7 +630,7 @@ class bookeey {
             "Cust_Data2" => ""
         );
         
-        $postParams['Do_TxnDtl'] = $txnDtl;
+        $postParams['Do_TxnDtl'] = [$txnDtl];
         $postParams['Do_TxnHdr'] = $txnHdr;
         $postParams['Do_Appinfo'] = $appInfo;
         $postParams['Do_PyrDtl'] = $pyrDtl;
@@ -644,6 +644,7 @@ class bookeey {
             'Accept: application/json',
             'Content-Type: application/json',
         );
+
 
         curl_setopt($ch, CURLOPT_URL,$paymentGatewayUrl);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);

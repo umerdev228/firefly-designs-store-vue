@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 Session::updateCurrent();
 
-Route::get('/', function () {$setting = Setting::first();return view('frontend.layout.home', compact('setting'));})->name('home');
+Route::get('/', function () {
+    $setting = Setting::first();return view('frontend.layout.home', compact('setting'));
+})->name('home');
 
 Route::get('active/users', function (Illuminate\Http\Request $request) {
     $limit = 10;

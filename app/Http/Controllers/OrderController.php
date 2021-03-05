@@ -8,8 +8,10 @@ use App\Customer;
 use App\Order;
 use App\OrderProduct;
 use App\OrderStatus;
+use bookeey;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use function Symfony\Component\String\s;
 
 class OrderController extends Controller
 {
@@ -119,6 +121,7 @@ class OrderController extends Controller
 
     public function checkout() {
         $id = !empty($_GET['id']) ? $_GET['id'] : '';
+        $bookeeysetting = BookeySetting::first();
 
 
         $booking = Order::where('id', $id)->first();
@@ -138,13 +141,34 @@ class OrderController extends Controller
             return redirect('client/saveorder');
         }
         else {
+//            dd($details);
+            $submid = $bookeeysetting['submid'];
+
+
+            $bookeey = new bookeey();
+            $bookeey->setIsEnable(true);
+            $bookeey->setIsTestModeEnable(false);
+            $bookeey->setMerchantID($bookeeysetting['mid']);
+            $bookeey->setSecretKey($bookeeysetting['secrete']);
+            $bookeey->setSuccessUrl(url('client/saveorder'));
+            $bookeey->setFailureUrl(url('/'));
+            $bookeey->setAmount((float)$booking->total);
+            $bookeey->setOrderId($booking->id);
+            $bookeey->setPayerName($user->name);
+            $bookeey->setPayerPhone($user->phone);
+            $bookeey->setDefaultPaymentOption($details['payment_gateway']);
+            $bookeey->setSelectedPaymentOption($details['payment_gateway']);
+            $bookeey->initiatePayment([ 'SubMerchUID' => $submid, 'Txn_AMT' => (float)$booking->total]);
+            $bookeey->getPaymentStatus($booking->id);
+
+            dd($bookeey);
+
 //            $mid = 'mer2000032';
 //            $secret_key = '6743048';
 
 //            $mid = 'mer20000543';
 //            $secret_key = '3750331';
 
-            $bookeey = BookeySetting::first();
 //            $mid = 'mer20000719';
 //            $secret_key = '2934100';
 //            $submid = 'Subm2100086';
