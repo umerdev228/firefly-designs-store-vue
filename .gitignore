@@ -1,9 +1,9 @@
 /node_modules
-/public/hot
-/storage
-/public/storage
-/storage/*.key
 /vendor
+/storage
+/public/storage/
+/public/storage/*
+/storage/*.key
 /.idea
 /.vagrant
 Homestead.json
@@ -18,5 +18,4 @@ yarn-error.log
 _ide_helper.php
 public/uploads/*
 storage
-public/js/app.js
 
