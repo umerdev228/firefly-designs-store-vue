@@ -645,6 +645,7 @@ class bookeey {
             'Content-Type: application/json',
         );
 
+//        dd($orderId, json_encode($postParams, JSON_PRETTY_PRINT));
 
         curl_setopt($ch, CURLOPT_URL,$paymentGatewayUrl);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);

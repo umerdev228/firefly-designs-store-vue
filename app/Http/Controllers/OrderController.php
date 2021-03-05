@@ -142,8 +142,8 @@ class OrderController extends Controller
         }
         else {
 //            dd($details);
-            $submid = $bookeeysetting['submid'];
-
+            $submid = $bookeeysetting['submid'] != null ? $bookeeysetting['submid'] : $bookeeysetting['mid'];
+            $para = [ 'SubMerchUID' => $submid, 'Txn_AMT' => (float)$booking->total];
 
             $bookeey = new bookeey();
             $bookeey->setIsEnable(true);
@@ -158,7 +158,7 @@ class OrderController extends Controller
             $bookeey->setPayerPhone($user->phone);
             $bookeey->setDefaultPaymentOption($details['payment_gateway']);
             $bookeey->setSelectedPaymentOption($details['payment_gateway']);
-            $bookeey->initiatePayment([ 'SubMerchUID' => $submid, 'Txn_AMT' => (float)$booking->total]);
+            $bookeey->initiatePayment($para);
             $bookeey->getPaymentStatus($booking->id);
 
             dd($bookeey);
