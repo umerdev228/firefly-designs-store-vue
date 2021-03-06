@@ -97,8 +97,11 @@
           <button class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': $parent.settings.button_color}">
             <span class="MuiButton-label">
 
-              <span style="font-size: 1rem;">
-                Minimum Amount of order {{$parent.min_order}}
+              <span v-if="$parent.language === 'en'" style="font-size: 1rem;">
+                Minimum Amount of order {{$parent.settings.min_order}} KWD
+              </span>
+              <span v-else style="font-size: 1rem;">
+                الحد الأدنى لمبلغ الطلب {{$parent.settings.min_order}} دينار كويتي
               </span>
 
             </span>
