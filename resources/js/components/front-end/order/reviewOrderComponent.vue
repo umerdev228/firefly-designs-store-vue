@@ -77,7 +77,7 @@
           <path d="m376 432c-13.257812 0-24-10.742188-24-24v-96c0-13.257812 10.742188-24 24-24s24 10.742188 24 24v96c0 13.257812-10.742188 24-24 24zm0 0"></path>
         </g><path d="m360 64h96v16h-96zm0 0" fill="#eebc5a"></path></svg></div>
         <div class="free-space-80" style="background-color: white;"></div>
-        <div class="action-button-english" style="background-color: white; padding-bottom: 8px; margin-bottom: 0px; height: 60px; z-index: 4;">
+        <div v-if="$parent.settings.min_order <= totalPrice" class="action-button-english" style="background-color: white; padding-bottom: 8px; margin-bottom: 0px; height: 60px; z-index: 4;">
           <button v-on:click="$router.push('/checkout/details')" class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': $parent.settings.button_color}">
             <span class="MuiButton-label">
               <span class="px-1" style="position: absolute; left: 10px; top: 6px; line-height: 34px; background: rgba(0, 0, 0, 0.3); border-radius: 7px; min-width: 32px; height: 32px; font-size: 1rem;">
@@ -89,6 +89,18 @@
               <span style="position: absolute; right: 10px; top: 6px; line-height: 34px; border-radius: 7px; min-width: 32px; height: 32px; font-size: 1rem;">
                 {{ totalPrice }} KWD
               </span>
+            </span>
+            <span class="MuiTouchRipple-root"></span>
+          </button>
+        </div>
+        <div v-else class="action-button-english" style="background-color: white; padding-bottom: 8px; margin-bottom: 0px; height: 60px; z-index: 4;">
+          <button class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': $parent.settings.button_color}">
+            <span class="MuiButton-label">
+
+              <span style="font-size: 1rem;">
+                Minimum Amount of order {{$parent.min_order}}
+              </span>
+
             </span>
             <span class="MuiTouchRipple-root"></span>
           </button>
@@ -128,10 +140,10 @@ export default {
       axios.get(APP_URL+'/get-all-cart')
         .then(response => {
           if (response.data.type === 'success') {
-            console.log(response.data)
             self.cart = response.data.cart
             self.totalQuantity = response.data.quantity
             self.totalPrice = response.data.totalPrice
+            console.log(self.$parent.settings, self.totalPrice)
             this.$parent.loading = false
           }
         })
