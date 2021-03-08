@@ -17,6 +17,11 @@ class AddCustomMessageToSettingsTable extends Migration
             //
             $table->string('custom_message_for_schedule_delivery')->nullable();
             $table->string('custom_message_for_schedule_delivery_ar')->nullable();
+
+            $table->boolean('Bookeey')->default(true);
+            $table->boolean('Knet')->default(true);
+            $table->boolean('Credit')->default(true);
+            $table->boolean('Cash')->default(true);
         });
     }
 

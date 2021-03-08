@@ -42,9 +42,48 @@
             <div class="container">
                 <!--begin::Card-->
                 <div class="card card-custom">
-                    <div class="card-body">
+                    <div class="card-header">
+                    <h3 class="card-title">
+                        Allowed Payment Methods
+                    </h3>
+                    </div>
+                    <form action="{{route('payment-method-update')}}" method="post">
+                        @csrf
+                        <div class="card-body">
+                            <div class="col-lg-12">
+                                <div class="form-group form-check">
+                                    <label for="default_payment_method">Default Payment Method</label>
+                                    <select class="form-control" name="default_payment_method" id="default_payment_method">
+                                        <option @if($settings->default_payment_method == 'Cash') selected @endif value="Cash">Cash</option>
+                                        <option @if($settings->default_payment_method == 'Bookeey') selected @endif value="Bookeey">Bookeey</option>
+                                        <option @if($settings->default_payment_method == 'Credit') selected @endif value="Credit">Credit</option>
+                                        <option @if($settings->default_payment_method == 'Knet') selected @endif value="Knet">Knet</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form-check">
+                                    <label for="Cash">Cash</label>
+                                    <input type="checkbox" name="Cash" @if($settings->Cash) checked @endif id="Cash">
+                                </div>
+                                <div class="form-group form-check">
+                                    <label for="Bookeey">Bookeey</label>
+                                    <input type="checkbox" name="Bookeey" @if($settings->Bookeey) checked @endif id="Bookeey">
+                                </div>
+                                <div class="form-group form-check">
+                                    <label for="Knet">Knet</label>
+                                    <input type="checkbox" name="Knet" @if($settings->Knet) checked @endif id="Knet">
+                                </div>
+                                <div class="form-group form-check">
+                                    <label for="Credit">Credit</label>
+                                    <input type="checkbox" name="Credit" @if($settings->Credit) checked @endif id="Credit">
+                                </div>
+                                <div class="form-group">
+                                    <input class="btn btn-success" type="submit" name="Submit" id="Submit" value="Update Settings">
+                                </div>
+                            </div>
+                        </div>
 
-
+                    </form>
+                </div>
                         <div class="card card-custom">
                             <div class="card-header">
                                 <h3 class="card-title">
@@ -116,8 +155,7 @@
                             </form>
                             <!--end::Form-->
                         </div>
-                    </div>
-                </div>
+
                 <!--end::Card-->
             </div>
             <!--end::Container-->

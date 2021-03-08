@@ -138,16 +138,16 @@
                 <option selected class="MuiFormHelperText-root mx-auto text-left" style="width: 92%;">
                   Please select a payment method
                 </option>
-                <option value="Cash" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option v-if="$parent.settings.Cash" value="Cash" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   Cash
                 </option>
-                <option value="Bookeey" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option v-if="$parent.settings.Bookeey" value="Bookeey" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   Bookeey
                 </option>
-                <option value="Knet" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option v-if="$parent.settings.Knet" value="Knet" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   KNET
                 </option>
-                <option value="Credit" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option v-if="$parent.settings.Credit" value="Credit" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   Credit Card
                 </option>
                 <span class="MuiTouchRipple-root"></span>
@@ -326,6 +326,7 @@ export default {
     }
   },
   created() {
+    this.payment_type = this.$parent.settings.default_payment_method
     this.getCartItems()
     this.email = localStorage.getItem('customer_email')
     this.name = localStorage.getItem('customer_name')

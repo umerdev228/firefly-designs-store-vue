@@ -196,7 +196,9 @@ class SettingController extends Controller
     }
     public function payment(){
         $setting=BookeySetting::first();
-        return view('admin.payment.index',compact('setting'));
+        $settings=Setting::first();
+
+        return view('admin.payment.index',compact('setting', 'settings'));
     }
     public function saveBookey(Request $request){
 
@@ -468,7 +470,72 @@ class SettingController extends Controller
         ]);
 
         return redirect()->back();
+    }
 
+    public function paymentMethodsUpdate(Request $request) {
+        $settings = Setting::first();
+
+//        Bookeey
+        if($request->has('Bookeey')) {
+            Setting::where('id', 1)->update([
+                'Bookeey' => true
+            ]);
+        }
+        else {
+            Setting::where('id', 1)->update([
+                'Bookeey' => false
+            ]);
+        }
+
+//        Knet
+        if($request->has('Knet')) {
+            Setting::where('id', 1)->update([
+                'Knet' => true
+            ]);
+        }
+        else {
+            Setting::where('id', 1)->update([
+                'Knet' => false
+            ]);
+        }
+
+//        Cash
+        if($request->has('Cash')) {
+            Setting::where('id', 1)->update([
+                'Cash' => true
+            ]);
+        }
+        else {
+            Setting::where('id', 1)->update([
+                'Cash' => false
+            ]);
+        }
+
+//        Credit
+        if($request->has('Credit')) {
+            Setting::where('id', 1)->update([
+                'Credit' => true
+            ]);
+        }
+        else {
+            Setting::where('id', 1)->update([
+                'Credit' => false
+            ]);
+        }
+
+//        Default Payment Method
+        if($request->has('default_payment_method')) {
+            Setting::where('id', 1)->update([
+                'default_payment_method' => $request->default_payment_method
+            ]);
+        }
+        else {
+            Setting::where('id', 1)->update([
+                'default_payment_method' => 'Cash'
+            ]);
+        }
+
+        return redirect()->back();
     }
 
 }

@@ -36,6 +36,7 @@ Route::group(['prefix' => 'admin' ,'middleware'=>['role','language']], function 
         Route::get('/','AdminController@index');
         Route::get('getstatics','AdminController@getStatics');
         Route::get('payments','SettingController@payment');
+        Route::post('payments/active','SettingController@paymentMethodsUpdate')->name('payment-method-update');
         Route::post('savebookey','SettingController@saveBookey');
         Route::get('dashboard','AdminController@index');
         Route::get('salereport','AdminController@saleReport');
