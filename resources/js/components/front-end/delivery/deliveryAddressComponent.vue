@@ -3,7 +3,7 @@
     <div class="p-0 h-100">
       <div class="w-100 mx-0" style="min-height: 650px; background-color: white;">
         <simple-header v-if="$parent.language === 'en'" title="Address"></simple-header>
-        <simple-header v-else title="تبوك"></simple-header>
+        <simple-header v-else title="العنوان"></simple-header>
         <div class="border-top w-100" style="margin-top: 55px; background-color: white;">
           <div class="row stepperWidth" style="position: fixed; top: 53px; height: 5px; background-color: white; margin-right: auto; margin-left: auto;">
             <div class="col mx-1 align-self-center" :style="{'background-color': $parent.settings.button_color}" style="width: 30px; height: 2px;"></div>
