@@ -22,6 +22,7 @@ class AddCustomMessageToSettingsTable extends Migration
             $table->boolean('Knet')->default(true);
             $table->boolean('Credit')->default(true);
             $table->boolean('Cash')->default(true);
+            $table->string('default_payment_method')->default('Cash');
         });
     }
 
