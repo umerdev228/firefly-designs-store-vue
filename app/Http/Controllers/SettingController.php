@@ -275,10 +275,13 @@ class SettingController extends Controller
         $saturday_times=OpeningHours::where('schedule_id','=',$saturday->id)->get();
         $sunday_times=OpeningHours::where('schedule_id','=',$sunday->id)->get();
 
+        $settings=Setting::first();
 
         return view('admin.setting.schedule.edit_schedule',
         compact('monday','tuesday','wednesday','thursday','friday','saturday','sunday',
-            'monday_times','tuesday_times','wednesday_times','thursday_times','friday_times','saturday_times','sunday_times'));
+            'monday_times','tuesday_times','wednesday_times','thursday_times','friday_times','saturday_times','sunday_times',
+        'settings'
+        ));
     }
     public function postEditSchedule(Request $request){
         $monday=Schedule::where('day','monday')->get()->last();
@@ -458,7 +461,14 @@ class SettingController extends Controller
         }
         return response('success');
     }
+    public function updateScheduleSettings(Request $request) {
+        Setting::where('id', 1)->update([
+            'custom_message_for_schedule_delivery' => $request->custom_message_for_schedule_delivery,
+            'custom_message_for_schedule_delivery_ar' => $request->custom_message_for_schedule_delivery_ar,
+        ]);
 
+        return redirect()->back();
 
+    }
 
 }

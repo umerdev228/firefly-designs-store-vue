@@ -156,12 +156,20 @@ class CartController extends Controller
 
         $trxid = time();
         $totalPrice = Cart::getTotal();
-        $customer = Customer::where('phone', $request['mobile'])->first();
-        if (!$customer) {
-            $customer = Customer::create([
-                'name' => $request['name'],
-                'phone' => $request['phone'],
-                'email' => $request['email'],
+        if ($request['phone'] && $request['name']) {
+            $customer = Customer::where('phone', $request['mobile'])->first();
+            if (!$customer) {
+                $customer = Customer::create([
+                    'name' => $request['name'],
+                    'phone' => $request['phone'],
+                    'email' => $request['email'],
+                ]);
+            }
+        }
+        else {
+            return response()->json([
+                'type' => 'error',
+                'message' => 'Enter Name and Phone.'
             ]);
         }
 

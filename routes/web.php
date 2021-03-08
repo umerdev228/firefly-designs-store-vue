@@ -99,6 +99,7 @@ Route::group(['prefix' => 'admin' ,'middleware'=>['role','language']], function 
         Route::post('postNewSchedule','SettingController@postNewSchedule');
         Route::post('postEditSchedule','SettingController@postEditSchedule');
         Route::post('editsechdual','SettingController@editSechdual');
+        Route::post('schedule-deliver-custom-message','SettingController@updateScheduleSettings')->name('schedule-deliver-custom-message');
     });
     Route::group(['prefix' => 'promo_code'],function (){
         Route::get('/','PromoCodeController@index');

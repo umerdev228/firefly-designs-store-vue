@@ -135,12 +135,12 @@ export default {
     createOrder() {
       let self = this
       console.log(this.result)
-      if (!this.result) {
+      if (!this.result || !this.name) {
         if (this.$parent.language === 'ar') {
-          Vue.toasted.error('أدخل رقم الهاتف المتحرك');
+          Vue.toasted.error('أدخل رقم واسم الجوال');
         }
         else {
-          Vue.toasted.error('Enter Mobile Number');
+          Vue.toasted.error('Enter Mobile Number & Name');
         }
         return
       }
@@ -166,6 +166,9 @@ export default {
               localStorage.setItem('order_id', response.data.order_id)
               self.$router.push('/checkout/address')
               // window.location = "/payment?id="+response.data.order_id
+            }
+            else if (response.data.type === 'error') {
+              Vue.toasted.error(response.data.message)
             }
           })
           .catch(e => {

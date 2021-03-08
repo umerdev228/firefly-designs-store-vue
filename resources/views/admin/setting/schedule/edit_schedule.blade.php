@@ -46,6 +46,34 @@
         <div class="d-flex flex-column-fluid">
             <!--begin::Container-->
             <div class="container">
+
+                <!--begin::Card-->
+                <div class="card card-custom">
+                    <div class="card-header">
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="{{route('schedule-deliver-custom-message')}}" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input class="form-control w-100" value="{{$settings->custom_message_for_schedule_delivery}}" name="custom_message_for_schedule_delivery"  placeholder="Enter Custom Message " type="text"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control w-100" value="{{$settings->custom_message_for_schedule_delivery_ar}}" name="custom_message_for_schedule_delivery_ar"  placeholder="Enter Custom Message Arabic" type="text"/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input class="btn btn-success" type="submit" value="Update Custom Message">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 <!--begin::Card-->
                 <div class="card card-custom">
                     <div class="card-body">

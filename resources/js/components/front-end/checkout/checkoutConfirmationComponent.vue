@@ -199,8 +199,14 @@
         </div>
 
         <div class="border-top border-bottom row w-100 mx-0 justify-content-between" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" style="background-color: white; height: 60px;">
-          <div class="col-9 align-self-center ml-0 text-left" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" style="font-size: 1rem; font-weight: 400; color: red;">
+<!--          <div class="col-9 align-self-center ml-0 text-left" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" style="font-size: 1rem; font-weight: 400; color: red;">
             On {{ deliverTime }}
+          </div>-->
+          <div v-if="$parent.language === 'en'" class="col-9 align-self-center ml-0 text-left" style="font-size: 1rem; font-weight: 400; color: red;">
+            {{ $parent.settings.custom_message_for_schedule_delivery }}
+          </div>
+          <div v-else class="col-9 align-self-center ml-0 text-left" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" style="font-size: 1rem; font-weight: 400; color: red;">
+            {{ $parent.settings.custom_message_for_schedule_delivery_ar }}
           </div>
           <div class="col-2 align-self-center mr-4 pr-0 text-right">
             <svg  v-on:click="show" v-if="$parent.language === 'en'" class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(51, 51, 51);">
