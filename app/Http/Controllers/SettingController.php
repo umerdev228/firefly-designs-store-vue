@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BookeySetting;
 use App\DoctorSchedule;
+use App\Media;
 use App\OpeningHours;
 use App\Schedule;
 use App\Setting;
@@ -23,13 +24,16 @@ class SettingController extends Controller
     //
     public function index(){
         $setting=Setting::first();
-        return view('admin.setting.index',compact('setting'));
+        $images = Media::where('item_type', 'background_slider')->get();
+        return view('admin.setting.index',compact('setting', 'images'));
     }
     public function getSetting() {
         $setting = Setting::first();
+        $images = Media::where('item_type', 'background_slider')->get();
         return response()->json([
             'type' => 'success',
             'settings' => $setting,
+            'images' => $images,
         ]);
     }
     public function postSetting(Request $request){

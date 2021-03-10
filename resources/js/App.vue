@@ -35,6 +35,7 @@ export default {
   },
   data() {
     return {
+      backgroundImages: [],
       cat: 0,
       selectedArea: null,
       loading: true,
@@ -72,6 +73,8 @@ export default {
           .then(response => {
             if (response.data.type === 'success') {
               self.settings = response.data.settings
+              self.backgroundImages = response.data.images
+              console.log(response.data.images)
               console.log(response.data)
             }
           })

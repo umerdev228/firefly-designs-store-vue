@@ -42,19 +42,57 @@
         </button>
 
       </div>
-      <div class="changeToFixedBackground m-0 p-0" :style="{'height': '100%', 'width': '100%', 'background': 'url(/'+$parent.settings.background+') center center / cover no-repeat', 'position': 'absolute'}"></div>
+      <VueSlickCarousel :arrows="false" :dots="true" v-if="backgroundImages.length > 0" >
+        <img  v-for="image in backgroundImages" :src="image.path" alt="">
+      </VueSlickCarousel>
+<!--      <div v-for="image in backgroundImages" class="changeToFixedBackground m-0 p-0"-->
+<!--           :style="{'height': '100%', 'width': '100%', 'background': 'url('+image.path+') center center / cover no-repeat', 'position': 'absolute'}"></div>-->
+
     </div>
   </div>
 
 </template>
 
 <script>
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+
+
 export default {
+  components: { VueSlickCarousel },
   name: "bannerSideComponent",
+  data(){
+    return {
+      backgroundImages: []
+    }
+  },
+  created() {
+    this.getBackgroundImageSlider();
+    if (this.$parent.backgroundImages.length > 0) {
+
+      console.log(this.$parent.backgroundImages)
+    }
+  },
   methods: {
     changeLanguage(lang) {
       localStorage.setItem('lang', lang)
       this.$parent.language = lang
+    },
+    getBackgroundImageSlider() {
+      let self = this
+      self.loading = true
+
+      axios.get(APP_URL+'/get-slider-images')
+          .then(response => {
+            if (response.data.type === 'success') {
+              self.backgroundImages = response.data.images
+              console.log(response.data.images)
+            }
+          })
+          .catch(e => {
+            this.errors.push(e)
+          })
     }
   }
 }

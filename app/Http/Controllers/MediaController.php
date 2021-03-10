@@ -82,4 +82,33 @@ class MediaController extends Controller
     {
         //
     }
+
+    public function imageDelete(Request $request) {
+        Media::where('id', $request['id'])->delete();
+        return response()->json(['result' => 'success', 'message' => 'Image Deleted Successfully']);
+    }
+
+    public function imageUpload(Request $request) {
+        $id = Array();
+//        dd(json_decode(\request()->session()->get('product-images'))[0]);
+
+
+        $image = $request->file('file');
+        $imageName = $image->getClientOriginalName();
+        $image->move(public_path('storage/images/background/slider/'),$imageName);
+
+        $media = Media::create([
+            'item_type' => 'background_slider',
+            'path' => '/storage/images/background/slider/' . $imageName,
+        ]);
+        return response()->json(['success'=>$imageName]);
+    }
+
+    public function getBackgroundImageSlider() {
+        $images = Media::where('item_type', 'background_slider')->get();
+        return response()->json([
+            'type' => 'success',
+            'images' => $images,
+        ]);
+    }
 }
