@@ -1,6 +1,9 @@
 <template>
   <div class="p-0 h-100">
-    <div class="mobile-image mobile-banner" :style="{'background': 'url(/'+$parent.settings.background+') center center / cover no-repeat',}"></div>
+    <VueSlickCarousel :arrows="false" :dots="true" v-if="$parent.backgroundImages.length > 0 && windowWidth < 800" >
+      <img class="mobile-image mobile-banner" v-for="image in $parent.backgroundImages" :src="image.path" >
+    </VueSlickCarousel>
+    <!--    <div class="mobile-image mobile-banner" :style="{'background': 'url(/'+$parent.settings.background+') center center / cover no-repeat',}"></div>-->
     <ul class="MuiList-root MuiList-padding" style="width: 100%; margin-top: 0; padding: 3px 0 0; background-color: white;">
       <a class="makeLinkNormal" href="javascript:void(0)">
         <div class="MuiButtonBase-root MuiListItem-root pt-1 MuiListItem-button MuiListItem-alignItemsFlexStart" tabindex="0" role="button" aria-disabled="false" style="margin-left: 0px; padding-right: 0px; padding-left: 15px; padding-bottom: 4px;">
@@ -163,17 +166,25 @@
 </template>
 
 <script>
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+
+
 export default {
+  components: { VueSlickCarousel },
   name: "home",
   data() {
     return {
       categories: [],
       area: null,
       search: '',
+      windowWidth: window.innerWidth,
       cart: [],
     }
   },
   created() {
+    console.log(this.windowWidth)
   },
   mounted() {
     this.getAllCategories()
