@@ -1,6 +1,6 @@
 <template>
   <div class="p-0 h-100">
-    <VueSlickCarousel :arrows="false" :dots="true" v-if="$parent.backgroundImages.length > 0 && windowWidth < 800 && $router.currentRoute.name === 'home'" >
+    <VueSlickCarousel :autoplay="true" :arrows="false" :dots="true" v-if="$parent.backgroundImages.length > 0 && windowWidth < 800 && $router.currentRoute.name === 'home'" >
       <img class="mobile-image mobile-banner" v-for="image in $parent.backgroundImages" :src="image.path" >
     </VueSlickCarousel>
     <!--    <div class="mobile-image mobile-banner" :style="{'background': 'url(/'+$parent.settings.background+') center center / cover no-repeat',}"></div>-->
