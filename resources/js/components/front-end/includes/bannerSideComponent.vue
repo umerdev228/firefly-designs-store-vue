@@ -42,7 +42,7 @@
         </button>
 
       </div>
-      <VueSlickCarousel :arrows="false" :dots="true" v-if="backgroundImages.length > 0" >
+      <VueSlickCarousel :arrows="false" :dots="true" v-if="backgroundImages.length > 0 && windowWidth > 600" >
         <img  v-for="image in backgroundImages" :src="image.path" alt="">
       </VueSlickCarousel>
 <!--      <div v-for="image in backgroundImages" class="changeToFixedBackground m-0 p-0"-->
@@ -64,7 +64,8 @@ export default {
   name: "bannerSideComponent",
   data(){
     return {
-      backgroundImages: []
+      backgroundImages: [],
+      windowWidth: window.innerWidth,
     }
   },
   created() {
