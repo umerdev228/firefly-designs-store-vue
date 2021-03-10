@@ -1,7 +1,4 @@
 @extends('mainpages.mainadmin')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script>
-
 @section('css')
     <style>
         .bootstrap-switch {
@@ -378,7 +375,10 @@
                                             <div sty class="image-input-wrapper"
                                                  style="background-image:url('{{ url( $setting?($setting->background!=null?$setting->background:''):'') }}');width: 100%"></div>
 
-                                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                            <label
+                                                    class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+                                                    data-action="change" data-toggle="tooltip" title=""
+                                                    data-original-title="Change avatar">
                                                 <i class="fa fa-pen icon-sm text-muted"></i>
                                                 <input type="file" name="background_image" accept=".png, .jpg, .jpeg"/>
                                                 <input type="hidden" name="profile_avatar_remove"/>
@@ -396,32 +396,6 @@
                                                 <i class="ki ki-bold-close icon-xs text-muted"></i>
                                             </span>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="image"> Background Slider Images<span class="text-danger"></span></label>
-                                                <div id="dropzone">
-                                                    <div class="dropzone needsclick" id="image-upload">
-                                                        <div class="dz-message needsclick">
-                                                            Upload Your Product Background Images
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <div id="preview-image" style="display: none;">
-                                                    <div class="dz-preview dz-file-preview">
-                                                        <div class="dz-image">
-                                                            <img data-dz-thumbnail=""/>
-                                                        </div>
-                                                        <div class="dz-details">
-                                                            <div class="dz-size"><span data-dz-size=""></span></div>
-                                                            <div class="dz-filename"><span data-dz-name=""></span></div></div>
-                                                        <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
-                                                        <div class="dz-error-message"><span data-dz-errormessage=""></span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
 
                                     <div class="form-group row">
@@ -523,10 +497,6 @@
     <script src="{{ asset('/assets/editor/js/editor.bootstrap4.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/select2custom.js') }}"></script>
     <script src="{{ url('adminside/governmentandareas/areas.js') }}"></script>
-
-    <style href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css"></style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
-
 
     <script>
         $(document).ready(function (e) {
@@ -642,6 +612,7 @@
             };
         }();
 
+
         var KTBootstrapSwitch = function() {
 
 // Private functions
@@ -664,75 +635,6 @@
         jQuery(document).ready(function () {
             KTBootstrapTimepicker.init();
         });
-
-        Dropzone.autoDiscover = false;
-        var product_dropzone = new Dropzone(document.getElementById('image-upload'), {
-            url: "{{route('product.image.update')}}", // Set the url
-            previewTemplate: document.querySelector('#preview-image').innerHTML,
-            parallelUploads: 2,
-            thumbnailHeight: 120,
-            thumbnailWidth: 120,
-            maxFilesize: 3,
-            addRemoveLinks: true,
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            filesizeBase: 1000,
-            thumbnail: function(file, dataUrl) {
-                if (file.previewElement) {
-                    file.previewElement.classList.remove("dz-file-preview");
-                    var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
-                    for (var i = 0; i < images.length; i++) {
-                        var thumbnailElement = images[i];
-                        thumbnailElement.alt = file.id;
-                        thumbnailElement.src = dataUrl;
-                    }
-                    setTimeout(function() { file.previewElement.classList.add("dz-image-preview"); }, 1);
-                }
-            },
-
-            init: function() {
-                myDropzone = this;
-                var self = this;
-                var color_images = {!! json_encode($images) !!}
-                for (var step = 0; step < color_images.length; step++) {
-                    var file = '{{asset('/')}}' + color_images[step].path
-                    console.log(file)
-
-                    var mockFile = { name: color_images[step].id, size: 0};
-
-                    myDropzone.emit("addedfile",mockFile );
-                    myDropzone.emit("thumbnail", mockFile, file);
-                    myDropzone.emit("complete",mockFile );
-                }
-            },
-
-            removedfile: function (file) {
-                console.log(file, 'color_dropzone')
-                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-                var color_images = {!! json_encode($images) !!}
-                for(var i = 0; i < color_images.length; ++i){
-                    if(color_images[i].id === file.name) {
-                        console.log(color_images[i].id)
-                        $.ajax({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            type:'POST',
-                            url:'{{ route('product.image.delete') }}',
-                            data: {_token: CSRF_TOKEN, id: color_images[i].id},
-                            success:function(response) {
-                                console.log(response)
-                            }
-                        });
-                    }
-                }
-                var _ref;
-                return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
-            }
-
-        });
-
     </script>
 @endsection
 
