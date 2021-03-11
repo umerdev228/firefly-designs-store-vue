@@ -485,6 +485,66 @@ export default {
       let additional = this.additional
       let order_id = localStorage.getItem('order_id')
 
+      if (address_type === "house") {
+        if (!block) {
+          Vue.toasted.error("Block Address required")
+          return;
+        }
+        else if (!street) {
+          Vue.toasted.error("Street Address required")
+          return;
+        }
+        else if (!block) {
+          Vue.toasted.error("Block Address required")
+          return;
+        }
+        else if (!house) {
+          Vue.toasted.error("House Address required")
+          return;
+        }
+      }
+      else if (address_type === "apartment") {
+        if (!block ) {
+          Vue.toasted.error("Block Address required")
+          return;
+        }
+        if (!street) {
+          Vue.toasted.error("Street Address required")
+          return;
+        }
+        if (!building ) {
+          Vue.toasted.error("Building Address required")
+          return;
+        }
+        if (!floor ) {
+          Vue.toasted.error("Floor Address required")
+          return;
+        }
+        if (!apartment ) {
+          Vue.toasted.error("Apartment Address required")
+          return;
+        }
+      }
+      else if(address_type === "office") {
+        if (!block ) {
+          Vue.toasted.error("Block Address required")
+          return;
+        }
+        if (!street ) {
+          Vue.toasted.error("Street Address required")
+          return;
+        }
+        if (!building ) {
+          Vue.toasted.error("Building Address required")
+          return;
+        }
+        if (!office ) {
+          Vue.toasted.error("Office Address required")
+          return;
+        }
+      }
+
+
       axios.post(APP_URL+'/updateOrder', {
         'address_type': address_type,
         'block': block,
@@ -499,16 +559,16 @@ export default {
         'additional': additional,
         'order_id': order_id,
       })
-        .then(response => {
-          if (response.data.type === 'success') {
-            Vue.toasted.success(response.data.message);
-            self.$router.push('/checkout/confirmation')
-            // window.location = "/payment?id="+response.data.order_id
-          }
-        })
-        .catch(e => {
-          this.errors.push(e)
-        })
+          .then(response => {
+            if (response.data.type === 'success') {
+              Vue.toasted.success(response.data.message);
+              self.$router.push('/checkout/confirmation')
+              // window.location = "/payment?id="+response.data.order_id
+            }
+          })
+          .catch(e => {
+            this.errors.push(e)
+          })
     },
 
   }
