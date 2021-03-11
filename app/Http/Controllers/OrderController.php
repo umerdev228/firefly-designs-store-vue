@@ -121,7 +121,7 @@ class OrderController extends Controller
 
     public function checkout() {
         $id = !empty($_GET['id']) ? $_GET['id'] : '';
-        $bookeey = BookeySetting::first();
+        $bookeeysetting = BookeySetting::first();
 
 
         $booking = Order::where('id', $id)->first();
@@ -141,6 +141,27 @@ class OrderController extends Controller
             return redirect('client/saveorder');
         }
         else {
+//            dd($details);
+            $submid = $bookeeysetting['submid'] != null ? $bookeeysetting['submid'] : $bookeeysetting['mid'];
+            $para = [ 'SubMerchUID' => $submid, 'Txn_AMT' => (float)$booking->total];
+
+            $bookeey = new bookeey();
+            $bookeey->setIsEnable(true);
+            $bookeey->setIsTestModeEnable(false);
+            $bookeey->setMerchantID($bookeeysetting['mid']);
+            $bookeey->setSecretKey($bookeeysetting['secrete']);
+            $bookeey->setSuccessUrl(url('client/saveorder'));
+            $bookeey->setFailureUrl(url('/'));
+            $bookeey->setAmount((float)$booking->total);
+            $bookeey->setOrderId($booking->id);
+            $bookeey->setPayerName($user->name);
+            $bookeey->setPayerPhone($user->phone);
+            $bookeey->setDefaultPaymentOption($details['payment_gateway']);
+            $bookeey->setSelectedPaymentOption($details['payment_gateway']);
+            $bookeey->initiatePayment($para);
+            $bookeey->getPaymentStatus($booking->id);
+
+            dd($bookeey);
 
 //            $mid = 'mer2000032';
 //            $secret_key = '6743048';
