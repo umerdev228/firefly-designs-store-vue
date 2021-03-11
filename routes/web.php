@@ -211,10 +211,4 @@ Route::get('/payment', 'OrderController@checkout');
 
 
 Route::get('get-site-setting', 'SettingController@getSetting');
-Route::get('get-slider-images', 'MediaController@getBackgroundImageSlider');
 Route::post('confirm-order', 'OrderController@confirmOrder');
-
-
-
-Route::post('product/image/upload', 'MediaController@imageUpload')->name('product.image.update');
-Route::post('product/image/delete', 'MediaController@imageDelete')->name('product.image.delete');
