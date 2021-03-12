@@ -228,7 +228,7 @@ class CartController extends Controller
 
         $order = Order::where('id', $request['order_id'])->update([
             'note' => $request['additional'],
-            'avanue' => $request['avanue'],
+            'avanue' => $request['avenue'],
             'officeno' => $request['office'],
             'house' => $request['apartment'] ? $request['apartment'] : $request['house'] ,
             'floor' => $request['floor'],
