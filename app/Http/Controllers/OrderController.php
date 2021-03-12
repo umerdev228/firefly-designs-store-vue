@@ -130,6 +130,8 @@ class OrderController extends Controller
         Order::where('id', $id)->update(['total' => (float)$booking->total + (float)$area->delivery_charges, 'subtotal' => (float)$booking->total ]);
         $booking = Order::where('id', $id)->first();
 
+        \request()->session()->put('order_id', $booking->id);
+
         $details['title'] = 'Appointment Booking';
         $details['name'] = $user->name;
         $details['body'] = "Your appointment has been booked";

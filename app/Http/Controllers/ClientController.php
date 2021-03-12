@@ -321,9 +321,8 @@ class ClientController extends Controller
         $today = Carbon::today();
         $lastOrder = Order::whereBetween('created_at', [$yesterday->addHours(24)->toDateTimeString(), $today->addHours(22)->toDateTimeString()])->get()->last();
 
-        $trx_id = Session::get('trx_id');
-
-        $order = Order::where('trx_id', $trx_id)->get()->last();
+        $order = \request()->session()->get('order_id');
+        $order = Order::where('id', $order)->first();
 
         $updateOrder = Order::find($order->id);
 
@@ -729,8 +728,11 @@ class ClientController extends Controller
     public function order_placed()
     {
 //        dd();
-        $invoice_number = Session::get('invoice_number');
-        $invoice_id = Session::get('invoice_id');
+        $order = \request()->session()->get('order_id');
+        $invoice_id = $order;
+        $order = Order::where('id', $order)->first();
+
+        $invoice_number = $order->invoice_number;
 
         $title = "Finished";
         $order = Order::with('customer')->where('orders.id', '=', $invoice_id)->select('orders.id', 'customer_id', 'order_statuses.desc', 'order_statuses.status', 'area_id')
