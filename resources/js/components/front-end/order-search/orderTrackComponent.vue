@@ -39,15 +39,15 @@
                 <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
               </svg>
             </div>
-            <input aria-invalid="false" id="input-with-icon-textfield" type="text" class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart" value=""></div>
+            <input aria-invalid="false" id="input-with-icon-textfield-en" type="text" class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart" value=""></div>
         </div>
-        <div v-else class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart" dir="rtl" style="height: 43px;">
+        <div v-else class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart" dir="rtl" style="height: 43px; width: 90%">
           <div class="MuiInputAdornment-root MuiInputAdornment-positionStart">
             <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
             </svg>
           </div>
-          <input aria-invalid="false" id="input-with-icon-textfield" type="text" class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart" value="" style="padding-right: 10px;">
+          <input aria-invalid="false" id="input-with-icon-textfield-ar" type="text" class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart" value="" style="padding-right: 10px;">
         </div>
       </div>
     </div>

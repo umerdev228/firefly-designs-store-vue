@@ -223,6 +223,7 @@ class CartController extends Controller
 
     public function updateOrder(Request $request) {
         $trx_id = time();
+
         $olderOrder = Session::put('trx_id', $trx_id);
 
         $order = Order::where('id', $request['order_id'])->update([
@@ -235,8 +236,20 @@ class CartController extends Controller
             'street' => $request['street'],
             'block' => $request['block'],
             'trx_id' => $trx_id,
-
         ]);
+        $order = Order::where('id', $request['order_id'])->first();
+        Customer::where('id', $order->customer_id)->update([
+            'type' => $request->address_type,
+            'house' => $request->house,
+            'block' => $request->block,
+            'avanue' => $request->avenue,
+            'building' => $request->building,
+            'floor' => $request->floor,
+            'officeno' => $request->office,
+            'special_dir' => $request->additional,
+            'street' => $request->street,
+        ]);
+
         return response()->json([
             'type' => 'success',
             'message' => 'Order Create Successfully',
