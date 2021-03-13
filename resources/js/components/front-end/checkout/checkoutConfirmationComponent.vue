@@ -392,7 +392,8 @@ export default {
         'coupon': coupon,
       }).then(response => {
         if (response.data.type === 'success') {
-          self.$parent = response.data.total
+          self.$parent.price = response.data.total
+          Vue.toasted.success(response.data.message)
         }
         else {
           Vue.toasted.error(response.data.message)

@@ -9,6 +9,7 @@ use App\Order;
 use App\OrderProduct;
 use App\OrderStatus;
 use bookeey;
+use Cart;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use function Symfony\Component\String\s;
@@ -123,11 +124,16 @@ class OrderController extends Controller
         $id = !empty($_GET['id']) ? $_GET['id'] : '';
         $bookeeysetting = BookeySetting::first();
 
+        $getSubTotal = Cart::getSubTotal();
+        $cartTotal = Cart::getTotal();
 
         $booking = Order::where('id', $id)->first();
         $area = Area::where('id', $booking->area_id)->first();
         $user = Customer::where('id', $booking->customer_id)->first();
-        Order::where('id', $id)->update(['total' => (float)$booking->total + (float)$area->delivery_charges, 'subtotal' => (float)$booking->total ]);
+        Order::where('id', $id)->update([
+            'total' => (float)$booking->total + (float)$area->delivery_charges, 'subtotal' => (float)$booking->total,
+            'discount' => $getSubTotal - $cartTotal,
+        ]);
         $booking = Order::where('id', $id)->first();
 
         \request()->session()->put('order_id', $booking->id);

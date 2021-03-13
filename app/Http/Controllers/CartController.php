@@ -317,7 +317,7 @@ class CartController extends Controller
                     ));
                 }
                 Cart::condition($condition);
-                return response()->json(['type' => 'Success', 'message' => 'Promo Applied Successfully', 'total' => Cart::getTotal()]);
+                return response()->json(['type' => 'success', 'message' => 'Promo Applied Successfully', 'total' => Cart::getTotal()]);
             }
             else {
                 return response()->json(['type' => 'error', 'message' => 'Promo Expire', 'total' => Cart::getTotal()]);

@@ -738,6 +738,8 @@ class ClientController extends Controller
         $order = Order::with('customer')->where('orders.id', '=', $invoice_id)->select('orders.id', 'customer_id', 'order_statuses.desc', 'order_statuses.status', 'area_id')
             ->leftJoin('order_statuses', 'order_statuses.id', '=', 'orders.status_id')->get()->last();
 
+        \Cart::clear();
+//        \request()->session()->forget('order_id');
 
         return view('client.order-status', compact('title', 'invoice_number', 'order'));
     }
