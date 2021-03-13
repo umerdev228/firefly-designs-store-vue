@@ -67,12 +67,11 @@ export default {
     getSiteSetting() {
       let self = this
       self.loading = true
-
+      console.log('parent get settings')
       axios.get(APP_URL+'/get-site-setting')
           .then(response => {
             if (response.data.type === 'success') {
               self.settings = response.data.settings
-              console.log(response.data)
             }
           })
           .catch(e => {

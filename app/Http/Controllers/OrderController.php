@@ -159,7 +159,7 @@ class OrderController extends Controller
             $bookeey->setMerchantID($bookeeysetting['mid']);
             $bookeey->setSecretKey($bookeeysetting['secrete']);
             $bookeey->setSuccessUrl(url('client/saveorder'));
-            $bookeey->setFailureUrl(url('/'));
+            $bookeey->setFailureUrl(url('/checkout/confirmation'));
             $bookeey->setAmount((float)$booking->total);
             $bookeey->setOrderId($booking->id);
             $bookeey->setPayerName($user->name);

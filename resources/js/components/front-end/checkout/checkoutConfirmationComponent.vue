@@ -37,7 +37,7 @@
               </svg>
             </div>
             <div class="col-8 align-self-center ml-0 text-left" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" style="font-size: 1rem; font-weight: 400;">
-              {{ $parent.selectedArea.name }}
+              {{ selectedArea.name }}
             </div>
             <div class="col-2 align-self-center mr-4 pr-0 text-right">
               <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(51, 51, 51);">
@@ -138,16 +138,16 @@
                 <option selected class="MuiFormHelperText-root mx-auto text-left" style="width: 92%;">
                   Please select a payment method
                 </option>
-                <option v-if="$parent.settings.Cash" value="Cash" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option v-if="settings.Cash" value="Cash" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   Cash
                 </option>
-                <option v-if="$parent.settings.Bookeey" value="Bookeey" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option v-if="settings.Bookeey" value="Bookeey" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   Bookeey
                 </option>
-                <option v-if="$parent.settings.Knet" value="Knet" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option v-if="settings.Knet" value="Knet" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   KNET
                 </option>
-                <option v-if="$parent.settings.Credit" value="Credit" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option v-if="settings.Credit" value="Credit" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   Credit Card
                 </option>
                 <span class="MuiTouchRipple-root"></span>
@@ -203,10 +203,10 @@
             On {{ deliverTime }}
           </div>-->
           <div v-if="$parent.language === 'en'" class="col-9 align-self-center ml-0 text-left" style="font-size: 1rem; font-weight: 400; color: red;">
-            {{ $parent.settings.custom_message_for_schedule_delivery }}
+            {{ settings.custom_message_for_schedule_delivery }}
           </div>
           <div v-else class="col-9 align-self-center ml-0 text-left" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" style="font-size: 1rem; font-weight: 400; color: red;">
-            {{ $parent.settings.custom_message_for_schedule_delivery_ar }}
+            {{ settings.custom_message_for_schedule_delivery_ar }}
           </div>
           <div class="col-2 align-self-center mr-4 pr-0 text-right">
             <svg  v-on:click="show" v-if="$parent.language === 'en'" class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="color: rgb(51, 51, 51);">
@@ -227,7 +227,7 @@
             <div class="col">
               <p class="mb-0 float-right mr-4" style="font-size: 16px;">
                 <span>
-                  {{ $parent.selectedArea.delivery_charges }} KWD
+                  {{ selectedArea.delivery_charges }} KWD
                 </span>
               </p>
             </div>
@@ -242,14 +242,14 @@
               </p>
             </div>
             <div class="col"><p class="float-right mr-4" style="font-size: 16px; font-weight: 600;">
-              {{ totalPrice + $parent.selectedArea.delivery_charges }} KWD
+              {{ totalPrice + selectedArea.delivery_charges }} KWD
             </p>
             </div>
           </div>
         </div>
         <div class="free-space-170"></div>
         <div class="action-button-english" style="background-color: white; padding-bottom: 8px; margin-bottom: 0px; height: 60px; z-index: 4;">
-          <button v-on:click="confirmOrder" v-if="$parent.language === 'en'" class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': $parent.settings.button_color}">
+          <button v-on:click="confirmOrder" v-if="$parent.language === 'en'" class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': settings.button_color}">
             <span class="MuiButton-label">
               <span style="font-size: 1rem;">
                 Confirm Order
@@ -257,7 +257,7 @@
             </span>
             <span class="MuiTouchRipple-root"></span>
           </button>
-          <button v-on:click="confirmOrder" v-else class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': $parent.settings.button_color}">
+          <button v-on:click="confirmOrder" v-else class="MuiButtonBase-root MuiButton-root MuiButton-contained mb-1  ml-1 mx-auto MuiButton-containedPrimary" tabindex="0" type="button" :dir="$parent.language === 'en' ? 'ltr' : 'rtl'" :style="{'width': '97%', 'height': '100%', 'box-shadow': 'none', 'text-transform': 'none', 'background': settings.button_color}">
             <span class="MuiButton-label">
               <span style="font-size: 1rem;">
                 أكد الطلب
@@ -318,6 +318,7 @@ export default {
       payment_type: '',
       special_remark: '',
       cart: [],
+      settings: [],
       totalPrice: [],
       quantity: [],
       coupon: '',
@@ -326,15 +327,17 @@ export default {
     }
   },
   created() {
-    this.payment_type = this.$parent.settings.default_payment_method
+    this.getSiteSetting()
     this.getCartItems()
     this.email = localStorage.getItem('customer_email')
     this.name = localStorage.getItem('customer_name')
     this.phone = localStorage.getItem('customer_phone')
+    this.selectedArea = JSON.parse(localStorage.getItem('selected-area'))
+
   },
   mounted() {
-    this.deliverTime = moment().add(this.$parent.selectedArea.delivery_time, 'minutes').format("dddd, MMMM Do  h:mm a");
-    this.deliverTimeFormated = moment().add(this.$parent.selectedArea.delivery_time, 'minutes').format('yyyy-MM-DDThh:mm')
+    this.deliverTime = moment().add(this.selectedArea.delivery_time, 'minutes').format("dddd, MMMM Do  h:mm a");
+    this.deliverTimeFormated = moment().add(this.selectedArea.delivery_time, 'minutes').format('yyyy-MM-DDThh:mm')
 
   },
   methods: {
@@ -399,6 +402,24 @@ export default {
           Vue.toasted.error(response.data.message)
         }
       })
+          .catch(e => {
+            this.errors.push(e)
+          })
+    },
+
+    getSiteSetting() {
+      let self = this
+      self.loading = true
+
+      axios.get(APP_URL+'/get-site-setting')
+          .then(response => {
+            if (response.data.type === 'success') {
+              self.settings = response.data.settings
+              this.payment_type = response.data.settings.default_payment_method
+
+              console.log(response.data, this.payment_type)
+            }
+          })
           .catch(e => {
             this.errors.push(e)
           })

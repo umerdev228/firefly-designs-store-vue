@@ -17,10 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 Session::updateCurrent();
 
-Route::get('/', function () {
-    $setting = Setting::first();return view('frontend.layout.home', compact('setting'));
-})->name('home');
-
 Route::get('active/users', function (Illuminate\Http\Request $request) {
     $limit = 10;
     $lastActivity = strtotime(Carbon::now()->subMinutes($limit));
@@ -212,3 +208,9 @@ Route::get('/payment', 'OrderController@checkout');
 
 Route::get('get-site-setting', 'SettingController@getSetting');
 Route::post('confirm-order', 'OrderController@confirmOrder');
+
+
+
+Route::get('{any}', function () {
+    $setting = Setting::first();return view('frontend.layout.home', compact('setting'));
+})->name('home')->where('any','.*');;

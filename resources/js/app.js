@@ -47,3 +47,12 @@ const app = new Vue({
     router: router,
     render: h => h(App),
 });
+
+router.beforeEach((to, from, next) => {
+    console.log('next')
+    next()
+
+})
+
+export default router;
+
