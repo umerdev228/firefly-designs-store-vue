@@ -730,7 +730,6 @@ class ClientController extends Controller
 //        dd();
         $order = \request()->session()->get('order_id');
         $invoice_id = $order;
-        dd($order, $invoice_id);
         $order = Order::where('id', $order)->first();
 
         $invoice_number = $order->invoice_number;
