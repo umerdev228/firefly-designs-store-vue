@@ -321,14 +321,15 @@ class ClientController extends Controller
         $today = Carbon::today();
         $lastOrder = Order::whereBetween('created_at', [$yesterday->addHours(24)->toDateTimeString(), $today->addHours(22)->toDateTimeString()])->get()->last();
 
-        $id = Session()->get('order_id');
+        $id = Session::get('order_id');
         $order = Order::where('id', $id)->first();
-        dd($id, $order);
+
+
 //        $order2 = Order::where('trx_id', $_GET['txnId'])->first();
 
 //        https://king-chicken.store/client/saveorder?merchantTxnId=149&txnId=29145198569
 
-        dd($id, $order, $_GET['merchantTxnId'], $_GET['txnId']);
+//        dd($id, $order, $_GET['merchantTxnId'], $_GET['txnId']);
 
         $updateOrder = Order::find($order->id);
 

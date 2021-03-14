@@ -8,6 +8,7 @@ use App\Customer;
 use App\Order;
 use App\OrderProduct;
 use App\OrderStatus;
+use Illuminate\Support\Facades\Session;
 use bookeey;
 use Cart;
 use Illuminate\Http\Request;
@@ -136,7 +137,7 @@ class OrderController extends Controller
         ]);
         $booking = Order::where('id', $id)->first();
 
-        \request()->session()->put('order_id', $booking->id);
+        Session::put('order_id', $booking->id);
 
         $details['title'] = 'Appointment Booking';
         $details['name'] = $user->name;
