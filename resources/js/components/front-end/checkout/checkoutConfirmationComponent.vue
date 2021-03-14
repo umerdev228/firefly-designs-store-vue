@@ -156,17 +156,17 @@
                 <option selected class="MuiFormHelperText-root mx-auto float-right" style="width: 92%;">
                   الرجاء اختيار طريقة الدفع
                 </option>
-                <option value="Cash" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option value="Cash" v-if="settings.Cash" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   نقدي
 
                 </option>
-                <option value="Bookeey" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option value="Bookeey" v-if="settings.Bookeey" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   Bookeey
                 </option>
-                <option value="Knet" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option value="Knet" v-if="settings.Knet" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   KNET
                 </option>
-                <option value="Credit" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
+                <option value="Credit" v-if="settings.Credit" class="float-left pl-2" style="line-height: 2; vertical-align: middle;">
                   بطاقة ائتمان
                 </option>
                 <span class="MuiTouchRipple-root"></span>
