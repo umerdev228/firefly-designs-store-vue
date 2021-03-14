@@ -324,6 +324,10 @@ class ClientController extends Controller
         $order = \request()->session()->get('order_id');
         $order = Order::where('id', $order)->first();
 
+//        https://king-chicken.store/client/saveorder?merchantTxnId=149&txnId=29145198569
+
+        dd($order, $_GET['merchantTxnId'], $_GET['txnId']);
+
         $updateOrder = Order::find($order->id);
 
         $updateOrder->invoice_number = date('dmyhis');
