@@ -322,7 +322,7 @@ class ClientController extends Controller
         $lastOrder = Order::whereBetween('created_at', [$yesterday->addHours(24)->toDateTimeString(), $today->addHours(22)->toDateTimeString()])->get()->last();
 
         $id = Session::get('order_id');
-        if ($_GET['merchantTxnId']) {
+        if (isset($_GET['merchantTxnId'])) {
             $order = Order::where('id', $_GET['merchantTxnId'])->first();
         }
         elseif ($id) {
