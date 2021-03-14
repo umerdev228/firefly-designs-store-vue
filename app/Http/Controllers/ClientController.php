@@ -323,6 +323,7 @@ class ClientController extends Controller
 
         $id = Session()->get('order_id');
         $order = Order::where('id', $id)->first();
+        dd($id, $order);
 //        $order2 = Order::where('trx_id', $_GET['txnId'])->first();
 
 //        https://king-chicken.store/client/saveorder?merchantTxnId=149&txnId=29145198569
