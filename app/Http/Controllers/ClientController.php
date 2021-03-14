@@ -323,10 +323,11 @@ class ClientController extends Controller
 
         $order = \request()->session()->get('order_id');
         $order = Order::where('id', $order)->first();
+        $order2 = Order::where('trx_id', $_GET['txnId'])->first();
 
 //        https://king-chicken.store/client/saveorder?merchantTxnId=149&txnId=29145198569
 
-        dd($order, $_GET['merchantTxnId'], $_GET['txnId']);
+        dd($order, $order2, $_GET['merchantTxnId'], $_GET['txnId']);
 
         $updateOrder = Order::find($order->id);
 
