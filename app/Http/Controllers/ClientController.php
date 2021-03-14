@@ -332,6 +332,8 @@ class ClientController extends Controller
             dd($id);
         }
 
+        Session::put('order_id', $order->id);
+
         $updateOrder = Order::find($order->id);
 
         $updateOrder->invoice_number = date('dmyhis');
@@ -344,13 +346,11 @@ class ClientController extends Controller
         $updateOrder->trx_status = 'completed';
         $updateOrder->update();
 
-
         Session::flash('msg', 'Your Order Placed Successfully. Will be Delivered Soon');
         $order_message = "A new order with an id:  $order->id has been placed.";
         Session::put('invoice_number', $order->invoice_number);
         Session::put('invoice_id', $order->id);
         event(new OrderEvent($order->id, $order_message));
-
 
         Session::forget('cart');
         Session::forget('order');
@@ -736,7 +736,7 @@ class ClientController extends Controller
     public function order_placed()
     {
 //        dd();
-        $order = \request()->session()->get('order_id');
+        $order = Session::get('order_id');
         $invoice_id = $order;
         $order = Order::where('id', $order)->first();
 
@@ -747,7 +747,7 @@ class ClientController extends Controller
             ->leftJoin('order_statuses', 'order_statuses.id', '=', 'orders.status_id')->get()->last();
 
         \Cart::clear();
-//        \request()->session()->forget('order_id');
+        Session::forget('order_id');
 
         return view('client.order-status', compact('title', 'invoice_number', 'order'));
     }
