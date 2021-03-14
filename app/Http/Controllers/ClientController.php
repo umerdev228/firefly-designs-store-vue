@@ -321,7 +321,7 @@ class ClientController extends Controller
         $today = Carbon::today();
         $lastOrder = Order::whereBetween('created_at', [$yesterday->addHours(24)->toDateTimeString(), $today->addHours(22)->toDateTimeString()])->get()->last();
 
-        $id = \request()->session()->get('order_id');
+        $id = Session()->get('order_id');
         $order = Order::where('id', $id)->first();
         $order2 = Order::where('trx_id', $_GET['txnId'])->first();
 
