@@ -332,6 +332,8 @@ class ClientController extends Controller
             dd($id);
         }
 
+//        https://king-chicken.store/client/saveorder?merchantTxnId=149&txnId=29145198569
+
         Session::put('order_id', $order->id);
 
         $updateOrder = Order::find($order->id);
@@ -343,6 +345,11 @@ class ClientController extends Controller
             $updateOrder->order_no = 1;
         }
 
+        if (isset($_GET['txnId'])) {
+            $updateOrder->trx_id = $_GET['txnId'];
+
+        }
+        $updateOrder->total = (float)$order->total + (float)$order->delivery_charges;
         $updateOrder->trx_status = 'completed';
         $updateOrder->update();
 

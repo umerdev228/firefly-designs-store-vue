@@ -146,7 +146,6 @@ export default {
             self.cart = response.data.cart
             self.totalQuantity = response.data.quantity
             self.totalPrice = response.data.totalPrice
-            console.log(self.$parent.settings, self.totalPrice)
             this.$parent.loading = false
           }
         })

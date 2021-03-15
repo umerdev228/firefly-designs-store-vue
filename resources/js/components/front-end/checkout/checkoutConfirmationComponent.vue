@@ -360,7 +360,6 @@ export default {
     getCartItems() {
       let self = this
       let order_id = localStorage.getItem('order_id')
-
       axios.get(APP_URL+'/get-all-cart')
         .then(response => {
           if (response.data.type === 'success') {
@@ -376,7 +375,6 @@ export default {
     confirmOrder() {
       let self = this
       let order_id = localStorage.getItem('order_id')
-
       axios.post(APP_URL+'/confirm-order', {
         'order_id': order_id,
         'payment_type': self.payment_type,

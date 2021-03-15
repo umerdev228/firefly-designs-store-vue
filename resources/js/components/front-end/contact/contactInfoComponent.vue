@@ -134,7 +134,6 @@ export default {
   methods: {
     createOrder() {
       let self = this
-      console.log(this.result)
       if (!this.result || !this.name) {
         if (this.$parent.language === 'ar') {
           Vue.toasted.error('أدخل رقم واسم الجوال');

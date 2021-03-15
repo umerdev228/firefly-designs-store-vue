@@ -132,7 +132,8 @@ class OrderController extends Controller
         $area = Area::where('id', $booking->area_id)->first();
         $user = Customer::where('id', $booking->customer_id)->first();
         Order::where('id', $id)->update([
-            'total' => (float)$booking->total + (float)$area->delivery_charges, 'subtotal' => (float)$booking->total,
+//            'total' => (float)$booking->total + (float)$area->delivery_charges,
+//            'subtotal' => (float)$booking->total,
             'discount' => $getSubTotal - $cartTotal,
         ]);
         $booking = Order::where('id', $id)->first();
@@ -154,6 +155,8 @@ class OrderController extends Controller
             $submid = $bookeeysetting['submid'] != null ? $bookeeysetting['submid'] : $bookeeysetting['mid'];
             $para = [ 'SubMerchUID' => $submid, 'Txn_AMT' => (float)$booking->total];
 
+            $totalAmount = (float)$booking->total + (float)$area->delivery_charges;
+
             $bookeey = new bookeey();
             $bookeey->setIsEnable(true);
             $bookeey->setIsTestModeEnable(false);
@@ -161,7 +164,7 @@ class OrderController extends Controller
             $bookeey->setSecretKey($bookeeysetting['secrete']);
             $bookeey->setSuccessUrl(url('client/saveorder'));
             $bookeey->setFailureUrl(url('/checkout/confirmation'));
-            $bookeey->setAmount((float)$booking->total);
+            $bookeey->setAmount((float)$totalAmount);
             $bookeey->setOrderId($booking->id);
             $bookeey->setPayerName($user->name);
             $bookeey->setPayerPhone($user->phone);
