@@ -152,10 +152,9 @@ class OrderController extends Controller
         }
         else {
 //            dd($details);
-            $submid = $bookeeysetting['submid'] != null ? $bookeeysetting['submid'] : $bookeeysetting['mid'];
-            $para = [ 'SubMerchUID' => $submid, 'Txn_AMT' => (float)$booking->total];
-
             $totalAmount = (float)$booking->total + (float)$area->delivery_charges;
+            $submid = $bookeeysetting['submid'] != null ? $bookeeysetting['submid'] : $bookeeysetting['mid'];
+            $para = [ 'SubMerchUID' => $submid, 'Txn_AMT' => (float)$totalAmount];
 
             $bookeey = new bookeey();
             $bookeey->setIsEnable(true);
