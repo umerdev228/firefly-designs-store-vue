@@ -332,6 +332,7 @@ class ClientController extends Controller
             dd($id);
         }
 
+
 //        https://king-chicken.store/client/saveorder?merchantTxnId=149&txnId=29145198569
 
         Session::put('order_id', $order->id);
@@ -349,9 +350,12 @@ class ClientController extends Controller
             $updateOrder->trx_id = $_GET['txnId'];
 
         }
+        $updateOrder->subtotal = (float)$order->total;
         $updateOrder->total = (float)$order->total + (float)$order->delivery_charges;
         $updateOrder->trx_status = 'completed';
         $updateOrder->update();
+
+        $order = Order::where('id', $id)->first();
 
         Session::flash('msg', 'Your Order Placed Successfully. Will be Delivered Soon');
         $order_message = "A new order with an id:  $order->id has been placed.";
