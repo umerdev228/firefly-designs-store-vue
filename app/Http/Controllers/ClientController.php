@@ -355,7 +355,6 @@ class ClientController extends Controller
         $updateOrder->trx_status = 'completed';
         $updateOrder->update();
 
-        $order = Order::where('id', $id)->first();
 
         Session::flash('msg', 'Your Order Placed Successfully. Will be Delivered Soon');
         $order_message = "A new order with an id:  $order->id has been placed.";
