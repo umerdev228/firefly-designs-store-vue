@@ -9,6 +9,7 @@ import CheckoutConfirmation from './components/front-end/checkout/checkoutConfir
 import ContactUs from './components/front-end/contact-us/contactUsComponent.vue';
 import Search from './components/front-end/search/searchComponent.vue';
 import OrderTrack from './components/front-end/order-search/orderTrackComponent.vue';
+import PaymentFailed from './components/front-end/failed/paymentFailedComponent.vue';
 
 export const routes = [
     {
@@ -65,5 +66,10 @@ export const routes = [
         name: 'OrderTrack',
         path: '/order/track',
         component: OrderTrack
+    },
+    {
+        name: 'PaymentFailed',
+        path: '/payment/failed',
+        component: PaymentFailed
     },
 ];
